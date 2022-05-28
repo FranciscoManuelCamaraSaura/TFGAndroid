@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 23/04/21 18:37 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: navigation_drawer.xml.
+  ~ Last modified: 23/04/21 18:37.
+  -->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".tfg.activity.Launcher">
+
+    <item
+        android:id="@+id/profile"
+        android:title="@string/side_menu_profile" />
+
+    <group
+        android:id="@+id/groupActions"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/mainMenu"
+            android:title="@string/side_menu_home" />
+
+        <item
+            android:id="@+id/records"
+            android:title="@string/side_menu_record" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/groupCommunications">
+
+        <item
+            android:id="@+id/messagesFragment"
+            android:title="@string/side_menu_messages" />
+
+        <item
+            android:id="@+id/alerts"
+            android:title="@string/side_menu_alerts" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/groupHelp">
+
+        <item
+            android:id="@+id/help"
+            android:title="@string/side_menu_help" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/groupLogout">
+
+        <item
+            android:id="@+id/navigationLogout"
+            android:title="@string/side_menu_logout" />
+    </group>
+</menu>

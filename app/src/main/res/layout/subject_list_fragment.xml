@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 5/05/21 16:01 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: subject_list_fragment.xml.
+  ~ Last modified: 5/05/21 16:01.
+  -->
+
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:name=".tfg.fragment.Subjects"
+    app:layoutManager="LinearLayoutManager"
+    tools:context=".tfg.fragment.Subjects"
+    tools:listitem="@layout/subject_item_fragment" />

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Literales del inicio de sesión.
+    <string name="login_province">Provincia</string>
+    <string name="login_provinces">Lista de provincias</string>
+    <string name="login_location">Localidad</string>
+    <string name="login_locations">Lista de localidades</string>
+    <string name="login_school">Colegio</string>
+    <string name="login_schools">Lista de colegios</string>
+    <string name="login_username">Nombre de usuario</string>
+    <string name="login_enter_username">Introduzca el nombre de usuario</string>
+    <string name="login_error_username">Debe introducir el nombre de usuario</string>
+    <string name="login_wrong_username">Nombre de usuario incorrecto</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_enter_password">Introduzca la contraseña</string>
+    <string name="login_error_password">Debe introducir la contraseña</string>
+    <string name="login_wrong_password">Contraseña incorrecta</string>
+
+    // Literales del menú principal.
+    <string name="main_menu_title">Menu principal</string>
+    <string name="main_menu_subjects">Asignaturas</string>
+    <string name="main_menu_teachers">Profesores</string>
+    <string name="main_menu_timetable">Horario</string>
+    <string name="main_menu_messages">Mensajes</string>
+    <string name="main_menu_record">Expediente</string>
+    <string name="main_menu_center_information">Información del centro</string>
+
+    // Literales del menú lateral.
+    <string name="side_menu_profile">Ir a mi perfil</string>
+    <string name="side_menu_home">Inicio</string>
+    <string name="side_menu_record">Expediente</string>
+    <string name="side_menu_messages">Mensajes</string>
+    <string name="side_menu_alerts">Alertas</string>
+    <string name="side_menu_help">Ayuda</string>
+    <string name="side_menu_logout">Cerrar sesión</string>
+
+    // Literales del perfil.
+    <string name="profile_title">Perfil</string>
+    <string name="profile_student_data">Datos del alumno:</string>
+    <string name="profile_name">Nombre</string>
+    <string name="profile_surnames">Apellidos</string>
+    <string name="profile_age">Edad</string>
+    <string name="profile_location">Localidad</string>
+    <string name="profile_new_location">Introduca su nueva localidad</string>
+    <string name="profile_province">Provincia</string>
+    <string name="profile_new_province">Introduca su nueva provincia</string>
+    <string name="profile_address">Dirección</string>
+    <string name="profile_new_address">Introduca su nueva dirección</string>
+    <string name="profile_phone">Teléfono</string>
+    <string name="profile_new_phone">Introduca su nuevo teléfono</string>
+    <string name="profile_wrong_phone">Formato del teléfono incorrecto</string>
+    <string name="profile_email">Correo electrónico</string>
+    <string name="profile_new_email">Introduca su nuevo correo electrónico</string>
+    <string name="profile_wrong_email">Formato del correo electrónico incorrecto</string>
+    <string name="profile_schooling_data">Datos de escolarización:</string>
+    <string name="profile_degree">Grado</string>
+    <string name="profile_course">Curso</string>
+    <string name="profile_group">Grupo</string>
+    <string name="profile_save_changes">Guardar cambios</string>
+    <string name="profile_change_password">Cambiar contraseña</string>
+
+    // Literales de la nueva contraseña.
+    <string name="new_password_title">Cambiar contraseña</string>
+    <string name="new_password_current_password">Introduca la contraseña actual</string>
+    <string name="new_password_current_password_error">Debe introducir la contraseña actual</string>
+    <string name="new_password_enter_password">Introduca la nueva contraseña</string>
+    <string name="new_password_enter_password_error">Debe introducir la nueva contraseña</string>
+    <string name="new_password_repeat_password">Confirme la nueva contraseña</string>
+    <string name="new_password_repeat_password_error">Debe confirmar la nueva contraseña</string>
+    <string name="new_password_current_equals_error">Debe introducir una contraseña nueva</string>
+    <string name="new_password_current_new_equals_error">Debe introducir una contraseña nueva distinta</string>
+    <string name="new_password_new_repeat_equals_error">La contraseña nueva no coincide</string>
+
+    // Literales de ayuda.
+    <string name="help_terms">Terminos y condiciones de uso</string>
+    <string name="help_contact">Contáctanos</string>
+    <string name="help_information">Información del desarrollador</string>
+
+    // Literales de contacto.
+    <string name="contact_title">Contactar</string>
+    <string name="contact_email">Correo electrónico: </string>
+    <string name="contact_phone">Teléfono: </string>
+
+    // Literales de la información del desarrollador.
+    <string name="developer_information_title">Información del desarrollador:</string>
+    <string name="developer_information_name">Nombre: Francisco Manuel Cámara Saura</string>
+    <string name="developer_information_email">Correo electrónico: fmcs@alu.ua.es</string>
+    <string name="developer_information_description">Descripción: Trabajo de fin de grado para la carrera de Ingeniería Informática de la Universidad de Alicante.</string>
+
+    // Literales de la asignatura.
+    <string name="subject_title">Datos de la asignatura</string>
+    <string name="subject_teacher">Profesor</string>
+    <string name="subject_name">Nombre</string>
+    <string name="subject_surnames">Apellidos</string>
+    <string name="subject_description">Descripción</string>
+
+    // Literales del profesor.
+    <string name="teacher_title">Datos del profesor</string>
+    <string name="teacher_name">Nombre</string>
+    <string name="teacher_surnames">Apellidos</string>
+    <string name="teacher_email">Correo electrónico</string>
+    <string name="teacher_subjects">Asignaturas que imparte</string>
+    <string name="teacher_timetable">Horario de tutorías</string>
+    <string name="teacher_contact">Contacto</string>
+    <string name="teacher_sent_message">Enviar mensaje</string>
+    <string name="teacher_sent_message_description">Descripción de enviar mensaje</string>
+
+    // Literales de los días de la semana.
+    <string name="day_monday">Lunes</string>
+    <string name="day_tuesday">Martes</string>
+    <string name="day_wednesday">Miércoles</string>
+    <string name="day_thursday">Jueves</string>
+    <string name="day_friday">Viernes</string>
+    <string name="day_saturday">Sábado</string>
+    <string name="day_sunday">Domingo</string>
+
+    // Literales de los mensajes.
+    <string name="message_new_message">Nuevo mensaje</string>
+    <string name="message_sent_messages">Mensajes enviados</string>
+    <string name="message_received_messages">Mensajes recibidos</string>
+    <string name="message_deleted_messages">Mensajes borrados</string>
+
+    // Literales de nuevo mensaje.
+    <string name="new_message_subject">Asignatura</string>
+    <string name="new_message_select_subject_type">Seleccione una asignatura o tipo de admin</string>
+    <string name="new_message_select_subject_error">Debe selecionar una asignatura</string>
+    <string name="new_message_teacher">Profesor</string>
+    <string name="new_message_select_person">Seleccione una persona</string>
+    <string name="new_message_select_person_error">Debe selecionar una persona</string>
+    <string name="new_message_matter">Asunto</string>
+    <string name="new_message_message_title">Título del mensaje</string>
+    <string name="new_message_message_title_error">Debe introducir un título del mensaje</string>
+    <string name="new_message_message">Mensaje</string>
+    <string name="new_message_content_message">Inserte el contenido del mensaje que desea enviar.</string>
+    <string name="new_message_content_message_error">Debe insertar el contenido del mensaje que desea enviar.</string>
+
+    // Delete unsent message literals.
+    <string name="delete_unsent_message_title">Cerrar mensaje</string>
+    <string name="delete_unsent_message_advice">El mensaje no ha sido enviado</string>
+    <string name="delete_unsent_message_question">¿Estás seguro de que deseas salir del mensaje?</string>
+
+    // Literales de mensaje enviado y recibido.
+    <string name="message_sent_message_subject">Asunto del mensaje</string>
+    <string name="message_sent_sender">Emisor</string>
+    <string name="message_sent_receiver">Destinatario</string>
+    <string name="message_sent_data_time">Fecha y hora</string>
+    <string name="message_sent_message">Mensaje</string>
+
+    // Literales de borrar un mensaje enviado o recibido.
+    <string name="message_delete_message_title">Borrar mensaje</string>
+    <string name="message_delete_message_question">¿Está seguro de que desea borrar el mensaje?</string>
+
+    // Literales de los grados.
+    <string name="degree_preschool">Preescolar</string>
+    <string name="degree_primary">Primaria</string>
+    <string name="degree_high_school">Secundaria</string>
+    <string name="degree_bachelor">Bachillerato</string>
+
+    // Literales de los cursos.
+    <string name="course_first">Primero</string>
+    <string name="course_second">Segundo</string>
+    <string name="course_third">Tercero</string>
+    <string name="course_fourth">Cuarto</string>
+    <string name="course_fifth">Quinto</string>
+    <string name="course_sixth">Sexto</string>
+
+    // Literales del expediente por asignatura.
+    <string name="record_subject">Seleccione una asignatura</string>
+    <string name="record_title">Notas de la evaluación</string>
+    <string name="record_first_trimester">Primer trimestre</string>
+    <string name="record_second_trimester">Segundo trimestre</string>
+    <string name="record_third_trimester">Tercer trimestre</string>
+    <string name="record_additional_notes">Notas adicionales</string>
+    <string name="record_job_notes">Notas de trabajos</string>
+    <string name="record_exhibition_notes">Notas de exposiciones</string>
+    <string name="record_average_note">Nota media</string>
+    <string name="record_final_note">Nota final</string>
+    <string name="record_final_note_course">Nota final de la asignatura</string>
+
+    // Literales de la información del centro.
+    <string name="information_center_title">Información del centro</string>
+    <string name="information_center_text">Información del centro:</string>
+    <string name="information_center_name">Nombre:</string>
+    <string name="information_center_address">Dirección:</string>
+    <string name="information_center_location">Población:</string>
+    <string name="information_center_province">Provincia:</string>
+    <string name="information_center_phone">Teléfono:</string>
+    <string name="information_center_web">Página web:</string>
+    <string name="information_center_administrative_staff">Personal administrativo del centro:</string>
+    <string name="information_center_administrative_staff_name">Nombre</string>
+    <string name="information_center_administrative_staff_position">Cargo</string>
+
+    // Literales del administrativo del centro.
+    <string name="administrative_title">Datos del administrativo</string>
+    <string name="administrative_name">Nombre</string>
+    <string name="administrative_surnames">Apellidos</string>
+    <string name="administrative_email">Correo electrónico</string>
+    <string name="administrative_timetable">Horario destinado a reuniones con los padres</string>
+    <string name="administrative_contact">Contacto</string>
+    <string name="administrative_sent_message">Enviar mensaje</string>
+
+    // Literales de las alertas.
+    <string name="alerts_type">Tipo de alerta</string>
+    <string name="alerts_date_time">Fecha y hora</string>
+    <string name="alerts_read">Leído</string>
+    <string name="alerts_absence">Ausencia</string>
+    <string name="alerts_homework_undone">Deberes sin hacer</string>
+    <string name="alerts_delivery_notes">Entrega de notas</string>
+    <string name="alerts_expulsion">Expulsión</string>
+
+    // Literales de cerrar sesión.
+    <string name="logout_title">Cerrar sesión</string>
+    <string name="logout_question">¿Está seguro de que desea cerrar la sesión?</string>
+
+    // Literales de los botones.
+    <string name="button_literal_next">Siguiente</string>
+    <string name="button_literal_login">Iniciar sesión</string>
+    <string name="button_literal_back">Atrás</string>
+    <string name="button_literal_change">Cambiar</string>
+    <string name="button_literal_close">Cerrar</string>
+    <string name="button_literal_send">Enviar</string>
+    <string name="button_literal_confirm">Confirmar</string>
+    <string name="button_literal_delete">Borrar</string>
+    <string name="button_literal_reply">Responder</string>
+    <string name="button_literal_accept">Aceptar</string>
+    <string name="button_literal_cancel">Cancelar</string>
+    <string name="button_literal_save">Guardar</string>
+
+    //Literales de la caja de navegación.
+    <string name="navigation_drawer_open">Abrir la caja de navegación</string>
+    <string name="navigation_drawer_close">Cerrar la caja de navegación</string>
+
+    // Mensajes de las excepciones de Curso.
+    <string name="io_exception_courses">IOException al obtener todos los cursos: </string>
+
+    // Mensajes de las excepciones de Evento.
+    <string name="io_exception_events">IOException al obtener todos los eventos: </string>
+
+    // Mensajes de las excepciones de Examen.
+    <string name="io_exception_exams">IOException al obtener todos los exámenes: </string>
+
+    // Mensajes de las excepciones de Grupo.
+    <string name="io_exception_student_group">IOException al obtener el groupo de la tabla estudiante: </string>
+    <string name="io_exception_group">IOException al obtener el groupo: </string>
+
+    // Mensajes de las excepciones de Imparte.
+    <string name="io_exception_impart">IOException al obtener imparte: </string>
+
+    // Mensajes de las excepciones del Tutor Legal.
+    <string name="io_exception_login">IOException al iniciar sesión: </string>
+    <string name="io_exception_update_legal_guardian">IOException al actualizar los datos personales del tutor legal: </string>
+
+    // Mensajes de las excepciones del director.
+    <string name="io_exception_manager">IOException al obtener el director: </string>
+    <string name="io_exception_managers">IOException al obtener el director: </string>
+
+    // Mensajes de las excepciones de Mensaje.
+    <string name="io_exception_sent_messages">IOException al obtener los mensajes enviados: </string>
+    <string name="io_exception_received_messages">IOException al obtener los mensajes recividos: </string>
+    <string name="io_exception_new_message_sent">IOException al enviar un nuevo mensaje: </string>
+
+    // Mensajes de las excepciones de Colegio.
+    <string name="io_exception_schools">IOException al obtener la tabla colegio: </string>
+    <string name="io_exception_school">IOException al obtener el colegio por su id: </string>
+
+    // Mensajes de las excepciones de Estudiante.
+    <string name="io_exception_student">IOException al obtener estudiante por el id de tutor legal: </string>
+
+    // Mensajes de las excepciones de Asignatura.
+    <string name="io_exception_subjects">IOException al obtener asignatura: </string>
+
+    // Mensajes de las excepciones de Profesor.
+    <string name="io_exception_teachers">IOException al obtener los profesores: </string>
+    <string name="io_exception_teacher">IOException al obtener el profesor: </string>
+
+    // Otras excepciones.
+    <string name="network_error">NetWork exception.</string>
+    <string name="user_error">Other exception.</string>
+    <string name="password_error">Other exception.</string>
+    <string name="authorization_error">Other exception.</string>
+    <string name="other_exception">Other exception.</string>
+</resources>

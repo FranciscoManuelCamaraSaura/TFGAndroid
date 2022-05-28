@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 19/05/21 19:37 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: messages_list_fragment.xml.
+  ~ Last modified: 19/05/21 19:37.
+  -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:name="tfg.fragment.Messages"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".tfg.fragment.Messages"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/messages_item_fragment" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        android:contentDescription="@string/message_new_message"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

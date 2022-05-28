@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 12/05/21 19:53 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: messages_fragment.xml.
+  ~ Last modified: 12/05/21 19:53.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tfg.fragment.MessagesMenu">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonNewMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/message_new_message"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSentMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/message_sent_messages"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonNewMessage" />
+
+        <Button
+            android:id="@+id/buttonReceivedMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/message_received_messages"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSentMessages" />
+
+        <Button
+            android:id="@+id/buttonDeleteMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/message_deleted_messages"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonReceivedMessages" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

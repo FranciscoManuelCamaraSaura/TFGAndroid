@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 19/04/21 17:50 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: main_menu_list_fragment.xml.
+  ~ Last modified: 19/04/21 17:50.
+  -->
+
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:layoutManager="LinearLayoutManager"
+    tools:context=".tfg.fragment.MainMenu"
+    tools:listitem="@layout/main_menu_item_fragment" />

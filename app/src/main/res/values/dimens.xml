@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 19/04/21 17:50 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: dimens.xml.
+  ~ Last modified: 19/04/21 17:50.
+  -->
+
+<resources>
+  <dimen name="text_margin">16dp</dimen>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 19/04/21 17:50 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: main_menu_item_fragment.xml.
+  ~ Last modified: 19/04/21 17:50.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_weight="5"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:drawableTop="@android:drawable/ic_dialog_email"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="gravity"
+        android:textSize="12sp" />
+</LinearLayout>

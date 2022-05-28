@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">SchoolManager</string>
+    <string name="app_logo" translatable="false">App Logo</string>
+    <string name="user_image" translatable="false">User image</string>
+    <string name="edit_logo" translatable="false">Edit Logo</string>
+    <string name="empty_string" translatable="false" />
+
+    // Login literals.
+    <string name="login_province">Province</string>
+    <string name="login_provinces">List of provinces</string>
+    <string name="login_location">Locations</string>
+    <string name="login_locations">List of locations</string>
+    <string name="login_school">School</string>
+    <string name="login_schools">List of schools</string>
+    <string name="login_username">Username</string>
+    <string name="login_enter_username">Enter username</string>
+    <string name="login_error_username">You must enter the username</string>
+    <string name="login_wrong_username">Incorrect username</string>
+    <string name="login_password">Password</string>
+    <string name="login_enter_password">Enter the password</string>
+    <string name="login_error_password">You must enter the password</string>
+    <string name="login_wrong_password">Incorrect password</string>
+
+    // Main menu literals.
+    <string name="main_menu_title">Main menu</string>
+    <string name="main_menu_subjects">Subjects</string>
+    <string name="main_menu_teachers">Teachers</string>
+    <string name="main_menu_timetable">Timetable</string>
+    <string name="main_menu_messages">Messages</string>
+    <string name="main_menu_record">Record</string>
+    <string name="main_menu_center_information">Center information</string>
+
+    // Side menu literals.
+    <string name="side_menu_profile">Go to my profile</string>
+    <string name="side_menu_home">Home</string>
+    <string name="side_menu_record">Record</string>
+    <string name="side_menu_messages">Messages</string>
+    <string name="side_menu_alerts">Alerts</string>
+    <string name="side_menu_help">Help</string>
+    <string name="side_menu_logout">Sign off</string>
+
+    // Profile literals.
+    <string name="profile_title">Profile</string>
+    <string name="profile_student_data">Student data:</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_surnames">Surnames</string>
+    <string name="profile_age">Age</string>
+    <string name="profile_location">Location</string>
+    <string name="profile_new_location">Enter your new location</string>
+    <string name="profile_province">Province</string>
+    <string name="profile_new_province">Enter your new province</string>
+    <string name="profile_address">Address</string>
+    <string name="profile_new_address">Enter your new address</string>
+    <string name="profile_phone">Phone</string>
+    <string name="profile_new_phone">Enter your new phone</string>
+    <string name="profile_wrong_phone">Incorrect phone format</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_new_email">Enter your new email</string>
+    <string name="profile_wrong_email">Incorrect email format</string>
+    <string name="profile_schooling_data">Schooling data:</string>
+    <string name="profile_degree">Degree</string>
+    <string name="profile_course">Course</string>
+    <string name="profile_group">Group</string>
+    <string name="profile_save_changes">Save changes</string>
+    <string name="profile_change_password">Change password</string>
+
+    // Literals of the new password.
+    <string name="new_password_title">Change password</string>
+    <string name="new_password_current_password">Enter current password</string>
+    <string name="new_password_current_password_error">Enter current password</string>
+    <string name="new_password_enter_password">Enter the new password</string>
+    <string name="new_password_enter_password_error">Enter the new password</string>
+    <string name="new_password_repeat_password">Confirm the new password</string>
+    <string name="new_password_repeat_password_error">Confirm the new password</string>
+    <string name="new_password_current_equals_error">You must enter a new password</string>
+    <string name="new_password_current_new_equals_error">You must enter a different new password</string>
+    <string name="new_password_new_repeat_equals_error">New password does not match</string>
+
+    // Help literals.
+    <string name="help_terms">Terms and conditions of use</string>
+    <string name="help_contact">Contact us</string>
+    <string name="help_information">Developer info</string>
+
+    // Contact literals.
+    <string name="contact_title">Contact</string>
+    <string name="contact_email">Email: </string>
+    <string name="contact_phone">Phone: </string>
+
+    // Literals of the developer information.
+    <string name="developer_information_title">Developer info:</string>
+    <string name="developer_information_name">Name: Francisco Manuel Cámara Saura</string>
+    <string name="developer_information_email">Email: fmcs@alu.ua.es</string>
+    <string name="developer_information_description">Description: Final degree project for the Computer Engineering career at the University of Alicante.</string>
+
+    // Literals of the subject.
+    <string name="subject_title">Subject data</string>
+    <string name="subject_teacher">Teacher</string>
+    <string name="subject_name">Name</string>
+    <string name="subject_surnames">Surnames</string>
+    <string name="subject_description">Description</string>
+
+    // Teacher literals.
+    <string name="teacher_title">Teacher data</string>
+    <string name="teacher_name">Name</string>
+    <string name="teacher_surnames">Surnames</string>
+    <string name="teacher_email">Email</string>
+    <string name="teacher_subjects">Subjects taught</string>
+    <string name="teacher_timetable">Tutoring schedule</string>
+    <string name="teacher_contact">Contact</string>
+    <string name="teacher_sent_message">Send Message</string>
+    <string name="teacher_sent_message_description">Send Message description</string>
+
+    // Literals of the days of the week.
+    <string name="day_monday">Monday</string>
+    <string name="day_tuesday">Tuesday</string>
+    <string name="day_wednesday">Wednesday</string>
+    <string name="day_thursday">Thursday</string>
+    <string name="day_friday">Friday</string>
+    <string name="day_saturday">Saturday</string>
+    <string name="day_sunday">Sunday</string>
+
+    // Message literals.
+    <string name="message_new_message">New message</string>
+    <string name="message_sent_messages">Sent messages</string>
+    <string name="message_received_messages">Received messages</string>
+    <string name="message_deleted_messages">Deleted messages</string>
+
+    // New message literals.
+    <string name="new_message_subject">Subject</string>
+    <string name="new_message_select_subject_type">Select a subject or admin type</string>
+    <string name="new_message_select_subject_error">You must select a subject</string>
+    <string name="new_message_teacher">Teacher</string>
+    <string name="new_message_select_person">Select a person</string>
+    <string name="new_message_select_person_error">You must select a person</string>
+    <string name="new_message_matter">Matter</string>
+    <string name="new_message_message_title">Message title</string>
+    <string name="new_message_message_title_error">You must enter a message title</string>
+    <string name="new_message_message">Message</string>
+    <string name="new_message_content_message">Insert the content of the message you want to send.</string>
+    <string name="new_message_content_message_error">You must insert the content of the message you want to send.</string>
+
+    // Delete unsent message literals.
+    <string name="delete_unsent_message_title">Close message</string>
+    <string name="delete_unsent_message_advice">The message has not been sent</string>
+    <string name="delete_unsent_message_question">Are you sure you want to get out of the message?</string>
+
+    // Sent and received message literals.
+    <string name="message_sent_message_subject">Message Subject</string>
+    <string name="message_sent_sender">Sender</string>
+    <string name="message_sent_receiver">Receiver</string>
+    <string name="message_sent_data_time">Date and time</string>
+    <string name="message_sent_message">Message</string>
+
+    // Sent and received message literals.
+    <string name="message_delete_message_title">Delete message</string>
+    <string name="message_delete_message_question">Are you sure you want to delete the message?</string>
+
+    // Degree literals.
+    <string name="degree_preschool">Preschool</string>
+    <string name="degree_primary">Primary</string>
+    <string name="degree_high_school">High school</string>
+    <string name="degree_bachelor">Bachelor</string>
+
+    // Course literals.
+    <string name="course_first">First</string>
+    <string name="course_second">Second</string>
+    <string name="course_third">Third</string>
+    <string name="course_fourth">Fourth</string>
+    <string name="course_fifth">Fifth</string>
+    <string name="course_sixth">Sixth</string>
+
+    // Literals of the record by subject.
+    <string name="record_subject">Select a subject</string>
+    <string name="record_title">Assessment notes</string>
+    <string name="record_first_trimester">First trimester</string>
+    <string name="record_second_trimester">Second trimester</string>
+    <string name="record_third_trimester">Third trimester</string>
+    <string name="record_additional_notes">Additional notes</string>
+    <string name="record_job_notes">Job Notes</string>
+    <string name="record_exhibition_notes">Exhibition notes</string>
+    <string name="record_average_note">Average note</string>
+    <string name="record_final_note">Final note</string>
+    <string name="record_final_note_course">Final grade for the course</string>
+
+    // Literals of the information of the center.
+    <string name="information_center_title">Center information</string>
+    <string name="information_center_text">Center information:</string>
+    <string name="information_center_name">Name:</string>
+    <string name="information_center_address">Address:</string>
+    <string name="information_center_location">Location:</string>
+    <string name="information_center_province">Province:</string>
+    <string name="information_center_phone">Phone:</string>
+    <string name="information_center_web">Web site:</string>
+    <string name="information_center_administrative_staff">Administrative staff of the center:</string>
+    <string name="information_center_administrative_staff_name">Name</string>
+    <string name="information_center_administrative_staff_position">Position</string>
+
+    // // Literals of the administrative center.
+    <string name="administrative_title">Administrative data</string>
+    <string name="administrative_name">Name</string>
+    <string name="administrative_surnames">Surnames</string>
+    <string name="administrative_email">Email</string>
+    <string name="administrative_timetable">Schedule for meetings with parents</string>
+    <string name="administrative_contact">Contact</string>
+    <string name="administrative_sent_message">Send Message</string>
+
+    // Literals of the alerts.
+    <string name="alerts_type">Alert type</string>
+    <string name="alerts_date_time">Date and time</string>
+    <string name="alerts_read">Read</string>
+    <string name="alerts_absence">Absence</string>
+    <string name="alerts_homework_undone">Homework undone</string>
+    <string name="alerts_delivery_notes">Delivery notes</string>
+    <string name="alerts_expulsion">Expulsion</string>
+
+    // Logout literals.
+    <string name="logout_title">Sign off</string>
+    <string name="logout_question">Are you sure you want to log out?</string>
+
+    // Button literals.
+    <string name="button_literal_next">Next</string>
+    <string name="button_literal_login">Login</string>
+    <string name="button_literal_back">Back</string>
+    <string name="button_literal_change">Change</string>
+    <string name="button_literal_close">Close</string>
+    <string name="button_literal_send">Send</string>
+    <string name="button_literal_confirm">Confirm</string>
+    <string name="button_literal_delete">Delete</string>
+    <string name="button_literal_reply">Reply</string>
+    <string name="button_literal_accept">Accept</string>
+    <string name="button_literal_cancel">Cancel</string>
+    <string name="button_literal_save">Save</string>
+
+    //Navigation drawer literals.
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    // Course exceptions messages.
+    <string name="io_exception_courses">IOException when getting all courses: </string>
+
+    // Event exceptions messages.
+    <string name="io_exception_events">IOException when getting all events: </string>
+
+    // Exam exceptions messages.
+    <string name="io_exception_exams">IOException when getting all the exams: </string>
+
+    // Group exceptions messages.
+    <string name="io_exception_student_group">IOException when getting group from student table: </string>
+    <string name="io_exception_group">IOException when getting group: </string>
+
+    // Impart exceptions messages.
+    <string name="io_exception_impart">IOException when getting impart: </string>
+
+    // Legal Guardian exceptions messages.
+    <string name="io_exception_login">IOException at login: </string>
+    <string name="io_exception_update_legal_guardian">IOException when updating legal guardian personal data: </string>
+
+    // Manager exceptions messages.
+    <string name="io_exception_manager">IOException when getting manager: </string>
+    <string name="io_exception_managers">IOException when getting managers: </string>
+
+    // Message exceptions messages.
+    <string name="io_exception_sent_messages">IOException when getting sent messages: </string>
+    <string name="io_exception_received_messages">IOException when getting received messages: </string>
+    <string name="io_exception_new_message_sent">IOException when sending a new message: </string>
+
+    // School exceptions messages.
+    <string name="io_exception_schools">IOException when getting school table: </string>
+    <string name="io_exception_school">IOException when getting school by id: </string>
+
+    // Student exceptions messages.
+    <string name="io_exception_student">IOException when getting student by legal guardian id: </string>
+
+    // Subjects exceptions messages.
+    <string name="io_exception_subjects">IOException when getting subjects: </string>
+
+    // Teacher exceptions messages.
+    <string name="io_exception_teachers">IOException when getting teachers: </string>
+    <string name="io_exception_teacher">IOException when getting teacher: </string>
+
+    // Other exceptions.
+    <string name="network_error">NetWork exception.</string>
+    <string name="user_error">Other exception.</string>
+    <string name="password_error">Other exception.</string>
+    <string name="authorization_error">Other exception.</string>
+    <string name="other_exception">Other exception.</string>
+</resources>

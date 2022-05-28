@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 16/6/21 18:17 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: navigation.xml.
+  ~ Last modified: 16/6/21 18:17.
+  -->
+
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainMenu">
+
+    <action
+        android:id="@+id/toPreLogin"
+        app:destination="@id/preLogin"
+        app:launchSingleTop="true" />
+
+    <action
+        android:id="@+id/toMainMenu"
+        app:destination="@id/mainMenu"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/mainMenu"
+        app:popUpToInclusive="false" />
+
+    <action
+        android:id="@+id/toProfile"
+        app:destination="@id/profile" />
+
+    <action
+        android:id="@+id/toRecords"
+        app:destination="@id/records" />
+
+    <action
+        android:id="@+id/toMessages"
+        app:destination="@id/messages" />
+
+    <action
+        android:id="@+id/toAlerts"
+        app:destination="@id/alerts" />
+
+    <action
+        android:id="@+id/toHelp"
+        app:destination="@id/help" />
+
+    <fragment
+        android:id="@+id/preLogin"
+        android:label="pre_login_fragment"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.PreLogin"
+        tools:layout="@layout/pre_login_fragment">
+
+        <action
+            android:id="@+id/action_preLogin_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+
+        <argument
+            android:name="id_school"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.MainMenu"
+        android:label="@string/app_name"
+        tools:layout="@layout/main_menu_list_fragment">
+
+        <action
+            android:id="@+id/action_mainMenu_to_subjects"
+            app:destination="@id/subjects" />
+
+        <action
+            android:id="@+id/action_mainMenu_to_teachers"
+            app:destination="@id/teachers" />
+
+        <action
+            android:id="@+id/action_mainMenu_to_messages"
+            app:destination="@id/messagesFragment" />
+
+        <action
+            android:id="@+id/action_mainMenu_to_records"
+            app:destination="@id/records" />
+
+        <action
+            android:id="@+id/action_mainMenu_to_directives"
+            app:destination="@id/directives" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjects"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Subjects"
+        android:label="@string/main_menu_subjects"
+        tools:layout="@layout/subject_list_fragment">
+
+        <action
+            android:id="@+id/action_subjects_to_subjectFile"
+            app:destination="@id/subjectFile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/directives"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Directives"
+        android:label="@string/main_menu_center_information"
+        tools:layout="@layout/directive_list_fragment">
+
+        <action
+            android:id="@+id/action_directives_to_directiveFile"
+            app:destination="@id/directiveFile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/directiveFile"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.DirectiveFile"
+        android:label="@string/administrative_title"
+        tools:layout="@layout/directive_file_fragment">
+
+        <action
+            android:id="@+id/action_directiveFile_to_newMessage"
+            app:destination="@id/newMessage" />
+
+        <argument
+            android:name="manager"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjectFile"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.SubjectFile"
+        android:label="@string/subject_title"
+        tools:layout="@layout/subject_file_fragment">
+
+        <action
+            android:id="@+id/action_subjectFile_to_teacherFile"
+            app:destination="@id/teacherFile"
+            app:popUpTo="@id/teacherFile"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/teacherFile"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.TeacherFile"
+        android:label="@string/teacher_title"
+        tools:layout="@layout/teacher_file_fragment">
+
+        <action
+            android:id="@+id/action_teacherFile_to_subjectFile"
+            app:destination="@id/subjectFile"
+            app:popUpTo="@id/subjectFile"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_teacherFile_to_newMessage"
+            app:destination="@id/newMessage" />
+
+        <argument
+            android:name="teacher"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/teachers"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Teachers"
+        android:label="@string/main_menu_teachers"
+        tools:layout="@layout/teacher_list_fragment">
+
+        <action
+            android:id="@+id/action_teachers_to_teacherFile"
+            app:destination="@id/teacherFile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/records"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Records"
+        android:label="@string/main_menu_record"
+        tools:layout="@layout/record_list_fragment">
+
+        <action
+            android:id="@+id/action_records_to_subjectRecord"
+            app:destination="@id/subjectRecord" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjectRecord"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.SubjectRecord"
+        android:label="subject_record_fragment"
+        tools:layout="@layout/subject_record_fragment" />
+
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.MessagesMenu"
+        android:label="@string/main_menu_messages"
+        tools:layout="@layout/messages_menu_fragment">
+
+        <action
+            android:id="@+id/action_messagesOptions_to_newMessage"
+            app:destination="@id/newMessage" />
+
+        <action
+            android:id="@+id/action_messagesOptions_to_messages"
+            app:destination="@id/messages" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newMessage"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.NewMessage"
+        android:label="@string/message_new_message"
+        tools:layout="@layout/new_message_fragment">
+
+        <action
+            android:id="@+id/action_newMessage_to_previewMessage"
+            app:destination="@id/previewMessage" />
+
+        <argument
+            android:name="subject"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="receiverName"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="previous_message"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/previewMessage"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.PreviewMessage"
+        android:label="@string/message_new_message"
+        tools:layout="@layout/preview_message_fragment">
+
+        <argument
+            android:name="subject"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="teacher"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="teacherDNI"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="messageTitle"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="contentMessage"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="previous_message"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sentMessage"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.SentMessage"
+        android:label="@string/message_sent_message"
+        tools:layout="@layout/sent_message_fragment">
+
+        <argument
+            android:name="messageId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/receiverMessage"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.ReceiverMessage"
+        android:label="@string/message_sent_message"
+        tools:layout="@layout/receiver_message_fragment">
+
+        <argument
+            android:name="messageId"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_receiverMessage_to_newMessage"
+            app:destination="@id/newMessage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/messages"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Messages"
+        android:label="Messages"
+        tools:layout="@layout/messages_list_fragment">
+
+        <action
+            android:id="@+id/action_messages_to_newMessage"
+            app:destination="@id/newMessage" />
+
+        <action
+            android:id="@+id/action_messages2_to_sentMessage"
+            app:destination="@id/sentMessage" />
+
+        <action
+            android:id="@+id/action_messages2_to_receiverMessage"
+            app:destination="@id/receiverMessage" />
+
+        <argument
+            android:name="isSendMessagesFragment"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Profile"
+        android:label="@string/profile_title"
+        tools:layout="@layout/profile_fragment">
+
+        <action
+            android:id="@+id/action_profile_to_changePassword"
+            app:destination="@id/changePassword" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/changePassword"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.ChangePassword"
+        android:label="@string/new_password_title"
+        tools:layout="@layout/change_password_fragment" />
+
+    <fragment
+        android:id="@+id/help"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Help"
+        android:label="@string/side_menu_help"
+        tools:layout="@layout/help_fragment">
+
+        <action
+            android:id="@+id/action_help_to_developerInformation"
+            app:destination="@id/developerInformation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/developerInformation"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.DeveloperInformation"
+        android:label="@string/help_information"
+        tools:layout="@layout/developer_information_fragment" />
+
+    <fragment
+        android:id="@+id/alerts"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Alerts"
+        android:label="@string/side_menu_alerts"
+        tools:layout="@layout/alert_list_fragment" />
+</navigation>

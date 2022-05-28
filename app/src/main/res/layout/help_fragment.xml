@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. All rights reserved.
+  ~ Designed and developed by Francisco Manuel Cámara Saura on 29/04/21 20:19 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
+  ~
+  ~ File name: help_fragment.xml.
+  ~ Last modified: 29/04/21 20:19.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tfg.fragment.Help">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/help_terms"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/help_contact"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonTerms" />
+
+        <Button
+            android:id="@+id/buttonInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/help_information"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonContact" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
