@@ -21,7 +21,7 @@ public class School {
   private String address;
   private String location;
   private String province;
-  private int phone;
+  private String phone;
   private String postal_code;
   private String web_site;
 
@@ -32,7 +32,7 @@ public class School {
       String location,
       String province,
       String postal_code,
-      int phone,
+      String phone,
       String web_site) {
     this.id = id;
     this.name = name;
@@ -88,11 +88,11 @@ public class School {
     this.postal_code = postal_code;
   }
 
-  public int getPhone() {
+  public String getPhone() {
     return phone;
   }
 
-  public void setPhone(int phone) {
+  public void setPhone(String phone) {
     this.phone = phone;
   }
 
@@ -117,12 +117,12 @@ public class School {
     School school = (School) o;
 
     return getId() == school.getId()
-        && getPhone() == school.getPhone()
         && getName().equals(school.getName())
         && getAddress().equals(school.getAddress())
         && getLocation().equals(school.getLocation())
         && getProvince().equals(school.getProvince())
         && getPostal_code().equals(school.getPostal_code())
+        && getPhone().equals(school.getPhone())
         && getWeb_site().equals(school.getWeb_site());
   }
 

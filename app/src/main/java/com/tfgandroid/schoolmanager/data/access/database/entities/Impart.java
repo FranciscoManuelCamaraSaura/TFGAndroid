@@ -14,11 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
+import androidx.room.PrimaryKey;
 import java.util.Objects;
 
 @Entity(
     tableName = "impart",
-    primaryKeys = {"course_id", "group_words", "subject"},
     foreignKeys = {
       @ForeignKey(
           entity = Group.class,
@@ -39,22 +39,40 @@ import java.util.Objects;
           onDelete = CASCADE,
           onUpdate = CASCADE)
     },
-    indices = {@Index({"course_id", "group_words"}), @Index("subject"), @Index("teacher")})
+    indices = {
+      @Index(
+          value = {"course_id", "group_words", "subject"},
+          unique = true),
+      @Index({"course_id", "group_words"}),
+      @Index("subject"),
+      @Index("teacher")
+    })
 public class Impart {
+  @PrimaryKey private int id;
   private int course_id;
   @NonNull private String group_words;
   @NonNull private String subject;
   @NonNull private String teacher;
 
   public Impart(
+      int id,
       int course_id,
       @NonNull String group_words,
       @NonNull String subject,
       @NonNull String teacher) {
+    this.id = id;
     this.course_id = course_id;
     this.group_words = group_words;
     this.subject = subject;
     this.teacher = teacher;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public int getCourse_id() {
@@ -104,7 +122,8 @@ public class Impart {
 
     Impart impart = (Impart) o;
 
-    return getCourse_id() == impart.getCourse_id()
+    return getId() == getId()
+        && getCourse_id() == impart.getCourse_id()
         && getGroup_words().equals(impart.getGroup_words())
         && getSubject().equals(impart.getSubject())
         && getTeacher().equals(impart.getTeacher());
@@ -112,14 +131,16 @@ public class Impart {
 
   @Override
   public int hashCode() {
-    return Objects.hash(getCourse_id(), getGroup_words(), getSubject(), getTeacher());
+    return Objects.hash(getId(), getCourse_id(), getGroup_words(), getSubject(), getTeacher());
   }
 
   @NonNull
   @Override
   public String toString() {
     return "Impart{"
-        + "course_id="
+        + "id="
+        + id
+        + ", course_id="
         + course_id
         + ", group_words='"
         + group_words

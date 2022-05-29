@@ -50,11 +50,11 @@ public class ExamRepository {
   public void insert(Exam newExam) {
     Group group =
         groupDao.getGroup(
-            newExam.getGroupMakeExam().getCourse_id(),
-            newExam.getGroupMakeExam().getGroup_words());
+            newExam.getCourse_id(),
+            newExam.getGroup_words());
 
     Course course =
-        courseDao.getCourseById(newExam.getGroupMakeExam().getCourse_id());
+        courseDao.getCourseById(newExam.getCourse_id());
 
     Event event = eventDao.getEvent(newExam.getEvent(), course.getSchool());
 

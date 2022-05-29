@@ -18,8 +18,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.tfgandroid.schoolmanager.data.access.database.convert.AdminTypeConvert;
 import com.tfgandroid.schoolmanager.data.access.database.convert.DataTypeConvert;
 import com.tfgandroid.schoolmanager.data.access.database.convert.DegreeTypeConverter;
-import com.tfgandroid.schoolmanager.data.access.database.convert.TrimesterTypeConvert;
+import com.tfgandroid.schoolmanager.data.access.database.convert.EvaluationTypeConvert;
 import com.tfgandroid.schoolmanager.data.access.database.convert.TypeExamTypeConvert;
+import com.tfgandroid.schoolmanager.data.access.database.dao.AlertDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.CourseDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.EventDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.ExamDAO;
@@ -35,6 +36,7 @@ import com.tfgandroid.schoolmanager.data.access.database.dao.SchoolDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.StudentDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.SubjectDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.TeacherDAO;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Alert;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Course;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Event;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Exam;
@@ -67,7 +69,8 @@ import com.tfgandroid.schoolmanager.data.access.database.entities.Teacher;
       Impart.class,
       Event.class,
       Exam.class,
-      Makes.class
+      Makes.class,
+      Alert.class
     },
     version = 2,
     exportSchema = false)
@@ -75,13 +78,13 @@ import com.tfgandroid.schoolmanager.data.access.database.entities.Teacher;
   AdminTypeConvert.class,
   DataTypeConvert.class,
   DegreeTypeConverter.class,
-  TrimesterTypeConvert.class,
+  EvaluationTypeConvert.class,
   TypeExamTypeConvert.class
 })
 public abstract class AppDatabase extends RoomDatabase {
   private static final int COLUMN_INDEX = 0;
   private static final String DATABASE_NAME = "school_database";
-  private static final String QUERY = "SELECT name FROM sqlite_master WHERE type = \'table\'";
+  private static final String QUERY = "SELECT name FROM sqlite_master WHERE type = 'table'";
   private static AppDatabase instance;
 
   public static synchronized AppDatabase getInstance(Context context) {
@@ -138,4 +141,6 @@ public abstract class AppDatabase extends RoomDatabase {
   public abstract ExamDAO examDAO();
 
   public abstract MakesDAO makesDAO();
+
+  public abstract AlertDAO alertDAO();
 }

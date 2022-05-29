@@ -11,15 +11,14 @@ package com.tfgandroid.schoolmanager.data.access.database.entities;
 import static androidx.room.ForeignKey.CASCADE;
 
 import androidx.annotation.NonNull;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
-import com.tfgandroid.schoolmanager.data.access.database.convert.TrimesterTypeConvert;
+import com.tfgandroid.schoolmanager.data.access.database.convert.EvaluationTypeConvert;
 import com.tfgandroid.schoolmanager.data.access.database.convert.TypeExamTypeConvert;
-import com.tfgandroid.schoolmanager.data.enums.Trimester;
+import com.tfgandroid.schoolmanager.data.enums.Evaluation;
 import com.tfgandroid.schoolmanager.data.enums.TypeExam;
 import java.util.Objects;
 
@@ -45,10 +44,18 @@ import java.util.Objects;
           onDelete = CASCADE,
           onUpdate = CASCADE)
     },
-    indices = {@Index({"course_id", "group_words"}), @Index("subject"), @Index("event")})
+    indices = {
+      @Index(
+          value = {"course_id", "group_words", "subject", "event"},
+          unique = true),
+      @Index({"course_id", "group_words"}),
+      @Index("subject"),
+      @Index("event")
+    })
 public class Exam {
   @PrimaryKey private int id;
-  @Embedded @NonNull private Group groupMakeExam;
+  private int course_id;
+  @NonNull private String group_words;
   private int event;
   private String subject;
 
@@ -56,23 +63,25 @@ public class Exam {
   @NonNull
   private TypeExam typeExam;
 
-  @TypeConverters(TrimesterTypeConvert.class)
+  @TypeConverters(EvaluationTypeConvert.class)
   @NonNull
-  private Trimester trimester;
+  private Evaluation evaluation;
 
   public Exam(
       int id,
-      @NonNull Group groupMakeExam,
+      int course_id,
+      @NonNull String group_words,
       int event,
-      @NonNull String subject,
+      String subject,
       @NonNull TypeExam typeExam,
-      @NonNull Trimester trimester) {
+      @NonNull Evaluation evaluation) {
     this.id = id;
-    this.groupMakeExam = groupMakeExam;
+    this.course_id = course_id;
+    this.group_words = group_words;
     this.event = event;
     this.subject = subject;
     this.typeExam = typeExam;
-    this.trimester = trimester;
+    this.evaluation = evaluation;
   }
 
   public int getId() {
@@ -83,12 +92,21 @@ public class Exam {
     this.id = id;
   }
 
-  public @NonNull Group getGroupMakeExam() {
-    return groupMakeExam;
+  public int getCourse_id() {
+    return course_id;
   }
 
-  public void setGroupMakeExam(@NonNull Group groupMakeExam) {
-    this.groupMakeExam = groupMakeExam;
+  public void setCourse_id(int course_id) {
+    this.course_id = course_id;
+  }
+
+  @NonNull
+  public String getGroup_words() {
+    return group_words;
+  }
+
+  public void setGroup_words(@NonNull String group_words) {
+    this.group_words = group_words;
   }
 
   public int getEvent() {
@@ -99,11 +117,11 @@ public class Exam {
     this.event = event;
   }
 
-  public @NonNull String getSubject() {
+  public String getSubject() {
     return subject;
   }
 
-  public void setSubject(@NonNull String subject) {
+  public void setSubject(String subject) {
     this.subject = subject;
   }
 
@@ -117,12 +135,12 @@ public class Exam {
   }
 
   @NonNull
-  public Trimester getTrimester() {
-    return trimester;
+  public Evaluation getEvaluation() {
+    return evaluation;
   }
 
-  public void setTrimester(@NonNull Trimester trimester) {
-    this.trimester = trimester;
+  public void setEvaluation(@NonNull Evaluation evaluation) {
+    this.evaluation = evaluation;
   }
 
   @Override
@@ -135,17 +153,24 @@ public class Exam {
     }
     Exam exam = (Exam) o;
     return getId() == exam.getId()
+        && getCourse_id() == exam.getCourse_id()
         && getEvent() == exam.getEvent()
-        && getGroupMakeExam().equals(exam.getGroupMakeExam())
+        && getGroup_words().equals(exam.getGroup_words())
         && getSubject().equals(exam.getSubject())
         && getTypeExam() == exam.getTypeExam()
-        && getTrimester() == exam.getTrimester();
+        && getEvaluation() == exam.getEvaluation();
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(
-        getId(), getGroupMakeExam(), getEvent(), getSubject(), getTypeExam(), getTrimester());
+        getId(),
+        getCourse_id(),
+        getGroup_words(),
+        getEvent(),
+        getSubject(),
+        getTypeExam(),
+        getEvaluation());
   }
 
   @NonNull
@@ -154,8 +179,11 @@ public class Exam {
     return "Exam{"
         + "id="
         + id
-        + ", groupMakeExam="
-        + groupMakeExam
+        + ", course_id="
+        + course_id
+        + ", group_words='"
+        + group_words
+        + '\''
         + ", event="
         + event
         + ", subject='"
@@ -163,8 +191,8 @@ public class Exam {
         + '\''
         + ", typeExam="
         + typeExam
-        + ", trimester="
-        + trimester
+        + ", evaluation="
+        + evaluation
         + '}';
   }
 }

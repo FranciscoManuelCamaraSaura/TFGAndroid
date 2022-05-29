@@ -52,7 +52,7 @@ public class LoginViewModel extends AndroidViewModel {
                 LegalGuardian legalGuardian = legalGuardianRepository.loginLegalGuardian(login);
                 Person person = personRepository.getPerson(legalGuardian.getPerson());
                 Student student = studentRepository.getStudent(legalGuardian.getPerson());
-                Group group = new Group(student.getCourse_id(), student.getGroup_words());
+                Group group = new Group(0, student.getCourse_id(), student.getGroup_words());
                 Course course = courseRepository.getCourse(student.getCourse_id());
 
                 legalGuardian.setStudent_name(student.getName());

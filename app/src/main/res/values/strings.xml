@@ -173,9 +173,9 @@
     // Literals of the record by subject.
     <string name="record_subject">Select a subject</string>
     <string name="record_title">Assessment notes</string>
-    <string name="record_first_trimester">First trimester</string>
-    <string name="record_second_trimester">Second trimester</string>
-    <string name="record_third_trimester">Third trimester</string>
+    <string name="record_first_trimester">First evaluation</string>
+    <string name="record_second_trimester">Second evaluation</string>
+    <string name="record_third_trimester">Third evaluation</string>
     <string name="record_additional_notes">Additional notes</string>
     <string name="record_job_notes">Job Notes</string>
     <string name="record_exhibition_notes">Exhibition notes</string>

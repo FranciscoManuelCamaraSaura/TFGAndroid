@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
+import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 import com.tfgandroid.schoolmanager.data.access.database.convert.DataTypeConvert;
 import java.sql.Date;
@@ -21,7 +22,6 @@ import java.util.Objects;
 
 @Entity(
     tableName = "message",
-    primaryKeys = {"id", "date", "sender", "receiver"},
     foreignKeys = {
       @ForeignKey(
           entity = Person.class,
@@ -38,7 +38,8 @@ import java.util.Objects;
     },
     indices = {@Index({"id", "date"}), @Index("sender"), @Index("receiver")})
 public class Message {
-  private final int id;
+    @PrimaryKey
+    private final int id;
 
   @TypeConverters(DataTypeConvert.class)
   @NonNull

@@ -3,7 +3,7 @@
  * Designed and developed by Francisco Manuel Cámara Saura on 3/03/21 17:17 for the Final Project of the Degree in Computer Engineering of the University of Alicante.
  *
  * File name: Makes.java.
- * Last modified: 3/03/21 16:58.
+ * Last modified: 3/03/21 17:58.
  */
 
 package com.tfgandroid.schoolmanager.data.access.database.entities;

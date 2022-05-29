@@ -34,6 +34,6 @@ public interface StudentDAO {
   @Query("SELECT * FROM student WHERE id = :student_id")
   Student getStudentById(int student_id);
 
-  @Query("SELECT course_id, group_words FROM student WHERE id = :student_id")
-  Group getGroup(int student_id);
+  //@Query("SELECT course_id, group_words FROM student WHERE id = :student_id")
+  //Group getGroup(int student_id);
 }

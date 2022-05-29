@@ -22,14 +22,21 @@ import java.util.Objects;
 
 @Entity(
     tableName = "event",
-    foreignKeys =
-        @ForeignKey(
-            entity = School.class,
-            parentColumns = "id",
-            childColumns = "school",
-            onDelete = CASCADE,
-            onUpdate = CASCADE),
-    indices = {@Index({"id"}), @Index("school")})
+    foreignKeys = {
+      @ForeignKey(
+          entity = School.class,
+          parentColumns = "id",
+          childColumns = "school",
+          onDelete = CASCADE,
+          onUpdate = CASCADE),
+      @ForeignKey(
+          entity = Person.class,
+          parentColumns = {"dni"},
+          childColumns = {"responsible"},
+          onDelete = CASCADE,
+          onUpdate = CASCADE)
+    },
+    indices = {@Index({"id"}), @Index("school"), @Index("responsible")})
 public class Event {
   @PrimaryKey private final int id;
   private String name;
@@ -41,15 +48,23 @@ public class Event {
   private Date date;
 
   private int school;
+  private String responsible;
 
   public Event(
-      int id, String name, String description, int duration, @NonNull Date date, int school) {
+      int id,
+      String name,
+      String description,
+      int duration,
+      @NonNull Date date,
+      int school,
+      String responsible) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.duration = duration;
     this.date = date;
     this.school = school;
+    this.responsible = responsible;
   }
 
   public int getId() {
@@ -97,6 +112,14 @@ public class Event {
     this.school = school;
   }
 
+  public String getResponsible() {
+    return responsible;
+  }
+
+  public void setResponsible(String responsible) {
+    this.responsible = responsible;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -111,33 +134,43 @@ public class Event {
         && getSchool() == event.getSchool()
         && getName().equals(event.getName())
         && getDescription().equals(event.getDescription())
-        && getDate().equals(event.getDate());
+        && getDate().equals(event.getDate())
+        && getResponsible().equals(event.getResponsible());
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(
-        getId(), getName(), getDescription(), getDuration(), getDate(), getSchool());
+        getId(),
+        getName(),
+        getDescription(),
+        getDuration(),
+        getDate(),
+        getSchool(),
+        getResponsible());
   }
 
-  @NonNull
+    @NonNull
   @Override
   public String toString() {
-    return "Event {"
-        + "id = "
+    return "Event{"
+        + "id="
         + id
-        + ", name = '"
+        + ", name='"
         + name
         + '\''
-        + ", description = '"
+        + ", description='"
         + description
         + '\''
-        + ", duration = "
+        + ", duration="
         + duration
-        + ", date = "
+        + ", date="
         + date
-        + ", school = "
+        + ", school="
         + school
+        + ", responsible='"
+        + responsible
+        + '\''
         + '}';
   }
 }

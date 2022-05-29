@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
   private static final int TIMEOUT = 15;
   private static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
-  private static final String REMOTE_URL = "http://192.168.99.1:8080/api/";
+  private static final String REMOTE_URL = "http://cryptic-thicket-59173.herokuapp.com/api/";
   private static Retrofit retrofitInstance;
 
   private static String token;

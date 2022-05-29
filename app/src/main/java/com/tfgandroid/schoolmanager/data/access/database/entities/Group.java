@@ -13,25 +13,40 @@ import static androidx.room.ForeignKey.CASCADE;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
 import java.util.Objects;
 
 @Entity(
     tableName = "group_course",
-    primaryKeys = {"course_id", "group_words"},
     foreignKeys =
         @ForeignKey(
             entity = Course.class,
             parentColumns = {"id"},
             childColumns = {"course_id"},
             onDelete = CASCADE,
-            onUpdate = CASCADE))
+            onUpdate = CASCADE),
+    indices =
+        @Index(
+            value = {"course_id", "group_words"},
+            unique = true))
 public class Group {
+  @PrimaryKey private int id;
   private int course_id;
   @NonNull private String group_words;
 
-  public Group(int course_id, @NonNull String group_words) {
+  public Group(int id, int course_id, @NonNull String group_words) {
+    this.id = id;
     this.course_id = course_id;
     this.group_words = group_words;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public int getCourse_id() {
@@ -56,25 +71,31 @@ public class Group {
     if (this == o) {
       return true;
     }
-
     if (!(o instanceof Group)) {
       return false;
     }
-
     Group group = (Group) o;
-
-    return getCourse_id() == group.getCourse_id()
+    return getId() == group.getId()
+        && getCourse_id() == group.getCourse_id()
         && getGroup_words().equals(group.getGroup_words());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getCourse_id(), getGroup_words());
+    return Objects.hash(getId(), getCourse_id(), getGroup_words());
   }
 
-  @NonNull
+    @NonNull
   @Override
   public String toString() {
-    return "Group{" + "course_id=" + course_id + ", group_words='" + group_words + '\'' + '}';
+    return "Group{"
+        + "id="
+        + id
+        + ", course_id="
+        + course_id
+        + ", group_words='"
+        + group_words
+        + '\''
+        + '}';
   }
 }
