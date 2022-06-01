@@ -12,8 +12,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 import androidx.room.Update;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Alert;
+import java.util.List;
 
 @Dao
 public interface AlertDAO {
@@ -25,4 +27,10 @@ public interface AlertDAO {
 
   @Delete
   void delete(Alert alert);
+
+  @Query("SELECT * FROM alert WHERE id = :alert_id")
+  Alert getAlert(int alert_id);
+
+  @Query("SELECT * FROM alert WHERE receiver = :receiver_dni")
+  List<Alert> getAlertsReceived(String receiver_dni);
 }

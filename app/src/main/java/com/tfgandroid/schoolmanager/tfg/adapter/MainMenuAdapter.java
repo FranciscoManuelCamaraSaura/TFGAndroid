@@ -9,6 +9,7 @@
 package com.tfgandroid.schoolmanager.tfg.adapter;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +25,9 @@ import java.util.List;
 
 public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHolder>
     implements OnClickListener {
+  private static final Drawable LEFT = null;
+  private static final Drawable RIGHT = null;
+  private static final Drawable BOTTOM = null;
   private final List<MenuItem> menuValues;
   private final Activity activity;
 
@@ -50,21 +54,31 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     switch (position) {
       case 0:
         holder.menuButton.setText(R.string.main_menu_subjects);
+        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
         break;
+
       case 1:
         holder.menuButton.setText(R.string.main_menu_teachers);
+        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
         break;
+
       case 2:
         holder.menuButton.setText(R.string.main_menu_timetable);
+        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
         break;
+
       case 3:
         holder.menuButton.setText(R.string.main_menu_messages);
         break;
+
       case 4:
         holder.menuButton.setText(R.string.main_menu_record);
+        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
         break;
+
       case 5:
         holder.menuButton.setText(R.string.main_menu_center_information);
+        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
         break;
     }
 

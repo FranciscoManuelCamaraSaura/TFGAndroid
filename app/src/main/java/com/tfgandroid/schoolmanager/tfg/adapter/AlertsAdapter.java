@@ -8,25 +8,33 @@
 
 package com.tfgandroid.schoolmanager.tfg.adapter;
 
-import android.widget.CheckBox;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tfgandroid.schoolmanager.R;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Alert;
 import com.tfgandroid.schoolmanager.databinding.AlertItemFragmentBinding;
-import com.tfgandroid.schoolmanager.tfg.fragment.AlertItem.Alert;
-
+import com.tfgandroid.schoolmanager.tfg.viewmodel.AlertsViewModel;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder> {
-  private final List<Alert> mValues;
+  public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
+  public static final String LANGUAGE = "es";
+  public static final String COUNTRY = "ES";
+  private final FragmentActivity fragmentActivity;
+  private final List<Alert> alerts;
 
-  public AlertsAdapter(List<Alert> items) {
-    mValues = items;
+  public AlertsAdapter(FragmentActivity fragmentActivity, List<Alert> alerts) {
+    this.fragmentActivity = fragmentActivity;
+    this.alerts = alerts;
   }
 
   @NonNull
@@ -35,26 +43,35 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
     View view =
         LayoutInflater.from(parent.getContext())
             .inflate(R.layout.alert_item_fragment, parent, false);
+
     return new ViewHolder(view);
   }
 
   @Override
   public void onBindViewHolder(final ViewHolder holder, int position) {
-    holder.mItem = mValues.get(position);
-    holder.alertType.setText(mValues.get(position).content);
+    SimpleDateFormat simpleDateFormat =
+        new SimpleDateFormat(DATE_FORMAT, new Locale(LANGUAGE, COUNTRY));
+    AlertsViewModel alertsViewModel =
+        new ViewModelProvider(fragmentActivity).get(AlertsViewModel.class);
+
+    holder.alert = alerts.get(position);
+    holder.alertType.setText(alerts.get(position).getMatter());
+    holder.dateAndHour.setText(simpleDateFormat.format(alerts.get(position).getSend_date()));
+
+    holder.checkBox.setOnClickListener(view -> alertsViewModel.setReadAlert(alerts.get(position)));
   }
 
   @Override
   public int getItemCount() {
-    return mValues.size();
+    return alerts.size();
   }
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public final View alertView;
-    public final TextView alertType;
-    public final TextView dateAndHour;
-    public final CheckBox checkBox;
-    public Alert mItem;
+    public Alert alert;
+    public CheckBox checkBox;
+    public TextView alertType;
+    public TextView dateAndHour;
 
     public ViewHolder(View view) {
       super(view);
@@ -63,8 +80,8 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
       alertView = view;
       alertType = alertItemFragmentBinding.alertType;
-      dateAndHour = alertItemFragmentBinding.dateAndHour;
       checkBox = alertItemFragmentBinding.checkBox;
+      dateAndHour = alertItemFragmentBinding.dateAndHour;
     }
 
     @NonNull

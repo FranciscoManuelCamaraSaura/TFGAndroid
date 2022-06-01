@@ -9,20 +9,33 @@
 package com.tfgandroid.schoolmanager.tfg.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tfgandroid.schoolmanager.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
+import com.tfgandroid.schoolmanager.data.access.database.entities.LegalGuardian;
+import com.tfgandroid.schoolmanager.data.preferences.Preferences;
+import com.tfgandroid.schoolmanager.databinding.AlertListFragmentBinding;
 import com.tfgandroid.schoolmanager.tfg.adapter.AlertsAdapter;
+import com.tfgandroid.schoolmanager.tfg.viewmodel.AlertsViewModel;
 
-public class Alerts extends Fragment {
+public class Alerts extends Fragment implements OnRefreshListener {
   private static final String ARG_COLUMN_COUNT = "column-count";
   private int alertColumnCount = 1;
+  private AlertsViewModel alertsViewModel;
+  private RecyclerView recyclerView;
+  private SwipeRefreshLayout swipeRefreshLayout;
 
   public Alerts() {}
 
@@ -47,22 +60,59 @@ public class Alerts extends Fragment {
 
   @Override
   public View onCreateView(
-      LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.alert_list_fragment, container, false);
+      @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    AlertListFragmentBinding alertListFragmentBinding =
+        AlertListFragmentBinding.inflate(inflater, container, false);
+    View view = alertListFragmentBinding.getRoot();
 
-    if (view instanceof RecyclerView) {
-      Context context = view.getContext();
-      RecyclerView recyclerView = (RecyclerView) view;
+    Context context = view.getContext();
+    recyclerView = alertListFragmentBinding.list;
 
-      if (alertColumnCount <= 1) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-      } else {
-        recyclerView.setLayoutManager(new GridLayoutManager(context, alertColumnCount));
-      }
-
-      recyclerView.setAdapter(new AlertsAdapter(AlertItem.ITEMS));
+    if (alertColumnCount <= 1) {
+      recyclerView.setLayoutManager(new LinearLayoutManager(context));
+    } else {
+      recyclerView.setLayoutManager(new GridLayoutManager(context, alertColumnCount));
     }
 
+    alertsViewModel = new ViewModelProvider(requireActivity()).get(AlertsViewModel.class);
+
+    SharedPreferences sharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(requireContext());
+    LegalGuardian legalGuardian = Preferences.getLoggedLegalGuardian(sharedPreferences);
+
+    alertsViewModel
+        .getAlerts(legalGuardian)
+        .observe(
+            getViewLifecycleOwner(),
+            alerts -> recyclerView.setAdapter(new AlertsAdapter(requireActivity(), alerts)));
+
+    swipeRefreshLayout = alertListFragmentBinding.swipeRefreshLayout;
+
     return view;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    swipeRefreshLayout.setOnRefreshListener(this);
+  }
+
+  @Override
+  public void onRefresh() {
+    swipeRefreshLayout.setRefreshing(true);
+
+    SharedPreferences sharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(requireContext());
+    LegalGuardian legalGuardian = Preferences.getLoggedLegalGuardian(sharedPreferences);
+
+    alertsViewModel
+        .getAlerts(legalGuardian)
+        .observe(
+            getViewLifecycleOwner(),
+            alerts -> {
+              swipeRefreshLayout.setRefreshing(false);
+              recyclerView.setAdapter(new AlertsAdapter(requireActivity(), alerts));
+            });
   }
 }

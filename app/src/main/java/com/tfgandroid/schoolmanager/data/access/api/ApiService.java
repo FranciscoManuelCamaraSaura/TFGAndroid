@@ -9,6 +9,7 @@
 package com.tfgandroid.schoolmanager.data.access.api;
 
 import com.tfgandroid.schoolmanager.data.access.api.entities.Login;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Alert;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Course;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Event;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Exam;
@@ -84,6 +85,9 @@ public interface ApiService {
   @GET("messageReceived/{receiver}")
   Call<List<Message>> getReceivedMessagesCall(@Path("receiver") String receiver);
 
+  @GET("alertReceived/{receiver}")
+  Call<List<Alert>> getReceivedAlertsCall(@Path("receiver") String receiver);
+
   @FormUrlEncoded
   @POST("messageRead")
   Call<String> setReadMessage(@Field("id") Integer id);
@@ -94,6 +98,10 @@ public interface ApiService {
 
   @POST("messageUpdate")
   Call<Message> updateData(@Body Message message);
+
+  @FormUrlEncoded
+  @POST("alertRead")
+  Call<String> setReadAlert(@Field("id") Integer id);
 
   @FormUrlEncoded
   @POST("subjects")

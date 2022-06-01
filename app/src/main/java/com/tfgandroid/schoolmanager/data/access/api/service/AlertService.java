@@ -9,8 +9,16 @@
 package com.tfgandroid.schoolmanager.data.access.api.service;
 
 import android.app.Application;
+import android.util.Log;
 import com.tfgandroid.schoolmanager.data.access.api.ApiService;
 import com.tfgandroid.schoolmanager.data.access.api.RetrofitClient;
+import com.tfgandroid.schoolmanager.data.access.api.error.TypeError;
+import com.tfgandroid.schoolmanager.data.access.api.error.TypeErrorConvert;
+import com.tfgandroid.schoolmanager.data.access.api.service.exceptions.ApiException;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Alert;
+import java.io.IOException;
+import java.util.List;
+import retrofit2.Response;
 
 public class AlertService {
   private static final String TAG = AlertService.class.getSimpleName();
@@ -27,5 +35,43 @@ public class AlertService {
     }
 
     return instanceService;
+  }
+
+  public List<Alert> getReceivedAlerts(String received) throws ApiException {
+    Response<List<Alert>> alertsResponse;
+
+    try {
+      alertsResponse = apiService.getReceivedAlertsCall(received).execute();
+
+      if (alertsResponse.isSuccessful()) {
+        return alertsResponse.body();
+      }
+
+      throw TypeErrorConvert.parseError(alertsResponse);
+    } catch (IOException e) {
+      ApiException apiException = new ApiException(TypeError.RECEIVED_MESSAGES, e.getMessage());
+
+      Log.e(TAG, apiException.getMessage(), e);
+
+      throw apiException;
+    }
+  }
+
+  public void readAlert(Alert alert) throws ApiException {
+    Response<String> alertResponse;
+
+    try {
+      alertResponse = apiService.setReadAlert(alert.getId()).execute();
+
+      if (!alertResponse.isSuccessful()) {
+        throw TypeErrorConvert.parseError(alertResponse);
+      }
+    } catch (IOException e) {
+      ApiException apiException = new ApiException(TypeError.NEW_MESSAGES, e.getMessage());
+
+      Log.e(TAG, apiException.getMessage(), e);
+
+      throw apiException;
+    }
   }
 }

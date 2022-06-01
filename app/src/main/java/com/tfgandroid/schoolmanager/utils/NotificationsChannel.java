@@ -68,7 +68,7 @@ public class NotificationsChannel extends ContextWrapper {
 
     NotificationCompat.Builder builder =
         new NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.notification_icon)
+            .setSmallIcon(R.drawable.notification_message_icon)
             .setContentTitle(title)
             .setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
