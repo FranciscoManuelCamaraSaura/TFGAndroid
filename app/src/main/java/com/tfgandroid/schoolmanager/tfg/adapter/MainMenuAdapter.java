@@ -9,7 +9,6 @@
 package com.tfgandroid.schoolmanager.tfg.adapter;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,9 +24,9 @@ import java.util.List;
 
 public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHolder>
     implements OnClickListener {
-  private static final Drawable LEFT = null;
-  private static final Drawable RIGHT = null;
-  private static final Drawable BOTTOM = null;
+  private static final int STAR = 0;
+  private static final int END = 0;
+  private static final int BOTTOM = 0;
   private final List<MenuItem> menuValues;
   private final Activity activity;
 
@@ -54,31 +53,38 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     switch (position) {
       case 0:
         holder.menuButton.setText(R.string.main_menu_subjects);
-        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
+        holder.menuButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            STAR, R.drawable.ic_action_subject, END, BOTTOM);
         break;
 
       case 1:
         holder.menuButton.setText(R.string.main_menu_teachers);
-        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
+        holder.menuButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            STAR, R.drawable.ic_action_teacher, END, BOTTOM);
         break;
 
       case 2:
         holder.menuButton.setText(R.string.main_menu_timetable);
-        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
+        holder.menuButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            STAR, R.drawable.ic_action_calendar, END, BOTTOM);
         break;
 
       case 3:
         holder.menuButton.setText(R.string.main_menu_messages);
+        holder.menuButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            STAR, R.drawable.ic_action_mail, END, BOTTOM);
         break;
 
       case 4:
         holder.menuButton.setText(R.string.main_menu_record);
-        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
+        holder.menuButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            STAR, R.drawable.ic_action_file, END, BOTTOM);
         break;
 
       case 5:
         holder.menuButton.setText(R.string.main_menu_center_information);
-        holder.menuButton.setCompoundDrawables(LEFT, null, RIGHT, BOTTOM);
+        holder.menuButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            STAR, R.drawable.ic_action_information, END, BOTTOM);
         break;
     }
 
