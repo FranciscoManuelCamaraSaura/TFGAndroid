@@ -20,18 +20,18 @@ import com.tfgandroid.schoolmanager.data.enums.TypeExam;
 
 public class TypeExamTypeConvert {
   @TypeConverter
-  public static TypeExam toExam(int typeExam) {
-    if (typeExam == WRITTEN.getExam()) {
+  public static TypeExam toTypeExam(int typeExam) {
+    if (typeExam == WRITTEN.getType_exam()) {
       return WRITTEN;
-    } else if (typeExam == ORAL.getExam()) {
+    } else if (typeExam == ORAL.getType_exam()) {
       return ORAL;
-    } else if (typeExam == PRESENTATION.getExam()) {
+    } else if (typeExam == PRESENTATION.getType_exam()) {
       return PRESENTATION;
-    } else if (typeExam == EXHIBITION.getExam()) {
+    } else if (typeExam == EXHIBITION.getType_exam()) {
       return EXHIBITION;
-    } else if (typeExam == OPTIONAL_WORK.getExam()) {
+    } else if (typeExam == OPTIONAL_WORK.getType_exam()) {
       return OPTIONAL_WORK;
-    } else if (typeExam == HOMEWORK.getExam()) {
+    } else if (typeExam == HOMEWORK.getType_exam()) {
       return HOMEWORK;
     } else {
       throw new IllegalArgumentException("Could not recognize typeExam");
@@ -39,7 +39,7 @@ public class TypeExamTypeConvert {
   }
 
   @TypeConverter
-  public static Integer toInteger(TypeExam exam) {
-    return exam.getExam();
+  public static Integer toInteger(TypeExam typeExam) {
+    return typeExam.getType_exam();
   }
 }

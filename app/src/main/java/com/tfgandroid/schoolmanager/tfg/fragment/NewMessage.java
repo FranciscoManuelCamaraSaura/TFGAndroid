@@ -49,6 +49,7 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
   private Button newMessageButtonSend;
   private int previousMessage;
   private List<Person> persons;
+  private List<Person> personsBySubject;
   private List<Subject> subjects;
   private NewMessageViewModel newMessageViewModel;
   private Spinner newMessageSubjectSpinner;
@@ -155,11 +156,12 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
             .trim();
     String subject = newMessageSubjectSpinner.getSelectedItem().toString();
     String teacher = newMessageTeacherSpinner.getSelectedItem().toString();
-    String teacherDNI = persons.get(newMessageTeacherSpinner.getSelectedItemPosition()).getDni();
 
     if (validateNewMessageValues(messageTitle, messageContent)) {
       ActionNewMessageToPreviewMessage action =
           NewMessageDirections.actionNewMessageToPreviewMessage();
+      String teacherDNI =
+          personsBySubject.get(newMessageTeacherSpinner.getSelectedItemPosition() - 1).getDni();
 
       action.setSubject(subject);
       action.setTeacher(teacher);
@@ -183,17 +185,17 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
             .observe(
                 getViewLifecycleOwner(),
                 managers -> {
-                  List<Person> persons = new ArrayList<>();
+                  personsBySubject = new ArrayList<>();
 
                   for (Manager manager : managers) {
                     for (Person person : this.persons) {
                       if (manager.getPerson().equals(person.getDni())) {
-                        persons.add(person);
+                        personsBySubject.add(person);
                       }
                     }
                   }
 
-                  loadPersons(view.getContext(), persons);
+                  loadPersons(view.getContext());
                 });
       } else if (position > 4) {
         Subject subject = subjects.get(position - 5);
@@ -203,10 +205,10 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
             .observe(
                 getViewLifecycleOwner(),
                 person -> {
-                  List<Person> persons = new ArrayList<>();
+                  personsBySubject = new ArrayList<>();
 
-                  persons.add(person);
-                  loadPersons(view.getContext(), persons);
+                  personsBySubject.add(person);
+                  loadPersons(view.getContext());
                 });
       }
     }
@@ -291,9 +293,9 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
     newMessageTeacherSpinner.setOnItemSelectedListener(this);
   }
 
-  private void loadPersons(Context context, List<Person> persons) {
-    int position = getPersonPosition(persons);
-    List<String> personsNames = getPersons(persons);
+  private void loadPersons(Context context) {
+    int position = getPersonPosition();
+    List<String> personsNames = getPersons();
     ArrayAdapter<String> personsAdapter =
         new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, personsNames);
 
@@ -306,13 +308,13 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
     newMessageTeacherSpinner.setOnItemSelectedListener(this);
   }
 
-  private List<String> getPersons(List<Person> persons) {
+  private List<String> getPersons() {
     List<String> personsNames = new ArrayList<>();
 
     personsNames.add(getResources().getString(R.string.new_message_select_person));
 
     if (!persons.isEmpty()) {
-      for (Person person : persons) {
+      for (Person person : personsBySubject) {
         personsNames.add(person.getName());
       }
     }
@@ -320,12 +322,12 @@ public class NewMessage extends Fragment implements OnClickListener, OnItemSelec
     return personsNames;
   }
 
-  private int getPersonPosition(List<Person> persons) {
+  private int getPersonPosition() {
     int position = 0;
 
     if (personName != null) {
-      for (int i = 0; i < persons.size(); i++) {
-        if (personName.equals(persons.get(i).getName())) {
+      for (int i = 0; i < personsBySubject.size(); i++) {
+        if (personName.equals(personsBySubject.get(i).getName())) {
           position = i + 1;
         }
       }

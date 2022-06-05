@@ -15,6 +15,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Exam;
+import java.util.List;
 
 @Dao
 public interface ExamDAO {
@@ -29,4 +30,7 @@ public interface ExamDAO {
 
   @Query("SELECT * FROM exam WHERE id = :exam_id")
   Exam getExam(int exam_id);
+
+  @Query("SELECT * FROM exam WHERE subject = :subject")
+  List<Exam> getSubjectExam(String subject);
 }

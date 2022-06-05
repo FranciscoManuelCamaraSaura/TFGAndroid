@@ -11,11 +11,11 @@ package com.tfgandroid.schoolmanager.data.enums;
 import com.google.gson.annotations.SerializedName;
 
 public enum Evaluation {
-  @SerializedName("first")
+  @SerializedName("first_trimester")
   FIRST(0),
-  @SerializedName("second")
+  @SerializedName("second_trimester")
   SECOND(1),
-  @SerializedName("third")
+  @SerializedName("third_trimester")
   THIRD(2);
 
   private final int evaluation;
@@ -24,7 +24,7 @@ public enum Evaluation {
     this.evaluation = evaluation;
   }
 
-  public int getTrimester() {
+  public int getEvaluation() {
     return evaluation;
   }
 }

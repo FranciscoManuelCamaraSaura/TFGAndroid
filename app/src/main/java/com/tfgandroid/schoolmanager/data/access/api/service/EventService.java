@@ -37,11 +37,11 @@ public class EventService {
     return instanceService;
   }
 
-  public List<Event> getEventsCall(Integer school) throws ApiException {
+  public List<Event> getEventsCall(int school, int student) throws ApiException {
     Response<List<Event>> eventResponse;
 
     try {
-      eventResponse = apiService.getEventsCall(school).execute();
+      eventResponse = apiService.getEventsCall(school, student).execute();
 
       if (eventResponse.isSuccessful()) {
         return eventResponse.body();

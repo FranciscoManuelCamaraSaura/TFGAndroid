@@ -61,7 +61,7 @@ public class Exam {
 
   @TypeConverters(TypeExamTypeConvert.class)
   @NonNull
-  private TypeExam typeExam;
+  private TypeExam type_exam;
 
   @TypeConverters(EvaluationTypeConvert.class)
   @NonNull
@@ -73,14 +73,14 @@ public class Exam {
       @NonNull String group_words,
       int event,
       String subject,
-      @NonNull TypeExam typeExam,
+      @NonNull TypeExam type_exam,
       @NonNull Evaluation evaluation) {
     this.id = id;
     this.course_id = course_id;
     this.group_words = group_words;
     this.event = event;
     this.subject = subject;
-    this.typeExam = typeExam;
+    this.type_exam = type_exam;
     this.evaluation = evaluation;
   }
 
@@ -126,12 +126,12 @@ public class Exam {
   }
 
   @NonNull
-  public TypeExam getTypeExam() {
-    return typeExam;
+  public TypeExam getType_exam() {
+    return type_exam;
   }
 
-  public void setTypeExam(@NonNull TypeExam typeExam) {
-    this.typeExam = typeExam;
+  public void setType_exam(@NonNull TypeExam type_exam) {
+    this.type_exam = type_exam;
   }
 
   @NonNull
@@ -157,7 +157,7 @@ public class Exam {
         && getEvent() == exam.getEvent()
         && getGroup_words().equals(exam.getGroup_words())
         && getSubject().equals(exam.getSubject())
-        && getTypeExam() == exam.getTypeExam()
+        && getType_exam() == exam.getType_exam()
         && getEvaluation() == exam.getEvaluation();
   }
 
@@ -169,7 +169,7 @@ public class Exam {
         getGroup_words(),
         getEvent(),
         getSubject(),
-        getTypeExam(),
+        getType_exam(),
         getEvaluation());
   }
 
@@ -190,7 +190,7 @@ public class Exam {
         + subject
         + '\''
         + ", typeExam="
-        + typeExam
+        + type_exam
         + ", evaluation="
         + evaluation
         + '}';

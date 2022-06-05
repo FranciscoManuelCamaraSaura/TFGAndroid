@@ -24,13 +24,13 @@ public enum TypeExam {
   @SerializedName("homework")
   HOMEWORK(5);
 
-  private final int exam;
+  private final int type_exam;
 
-  TypeExam(int exam) {
-    this.exam = exam;
+  TypeExam(int type_exam) {
+    this.type_exam = type_exam;
   }
 
-  public int getExam() {
-    return exam;
+  public int getType_exam() {
+    return type_exam;
   }
 }

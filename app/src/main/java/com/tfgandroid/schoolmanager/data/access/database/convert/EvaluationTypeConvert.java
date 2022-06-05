@@ -17,12 +17,12 @@ import com.tfgandroid.schoolmanager.data.enums.Evaluation;
 
 public class EvaluationTypeConvert {
   @TypeConverter
-  public static Evaluation toTrimester(int trimester) {
-    if (trimester == FIRST.getTrimester()) {
+  public static Evaluation toEvaluation(int evaluation) {
+    if (evaluation == FIRST.getEvaluation()) {
       return FIRST;
-    } else if (trimester == SECOND.getTrimester()) {
+    } else if (evaluation == SECOND.getEvaluation()) {
       return SECOND;
-    } else if (trimester == THIRD.getTrimester()) {
+    } else if (evaluation == THIRD.getEvaluation()) {
       return THIRD;
     } else {
       throw new IllegalArgumentException("Could not recognize trimester");
@@ -31,6 +31,6 @@ public class EvaluationTypeConvert {
 
   @TypeConverter
   public static Integer toInteger(Evaluation evaluation) {
-    return evaluation.getTrimester();
+    return evaluation.getEvaluation();
   }
 }

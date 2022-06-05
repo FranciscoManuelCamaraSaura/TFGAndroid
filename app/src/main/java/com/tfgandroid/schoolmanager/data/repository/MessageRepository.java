@@ -116,6 +116,13 @@ public class MessageRepository {
 
   public void sendMessage(Message message) throws ApiException {
     insert(messageService.sendMessage(message));
+
+    if (message.getPrevious_message() != 0) {
+      Message previousMessage = getMessage(message.getPrevious_message());
+
+      previousMessage.setRead(true);
+      replyMessage(previousMessage);
+    }
   }
 
   public void readMessage(Message message) throws ApiException {

@@ -15,6 +15,7 @@ import com.tfgandroid.schoolmanager.data.access.database.entities.Event;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Exam;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Impart;
 import com.tfgandroid.schoolmanager.data.access.database.entities.LegalGuardian;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Makes;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Manager;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Message;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Person;
@@ -70,14 +71,19 @@ public interface ApiService {
   @GET("student/{legal_guardian}")
   Call<List<Student>> getStudentCall(@Path("legal_guardian") String legal_guardian);
 
-  @GET("makes/{exam}")
-  Call<List<Exam>> getExamsCall(@Path("exam") Integer exam);
-
   @GET("managers/{school_id}")
   Call<List<Manager>> getManagerCall(@Path("school_id") Integer school_id);
 
-  @GET("event/{school_id}")
-  Call<List<Event>> getEventsCall(@Path("school_id") Integer school_id);
+  @GET("events")
+  Call<List<Event>> getEventsCall(
+      @Query("school_id") Integer school_id, @Query("student_id") Integer student_id);
+
+  @GET("exams")
+  Call<List<Exam>> getExamsCall(
+      @Query("course_id") Integer course_id, @Query("group_words") String group_words);
+
+  @GET("makes")
+  Call<List<Makes>> getMakesCall(@Query("student") Integer student);
 
   @GET("messageSent/{sender}")
   Call<List<Message>> getSentMessagesCall(@Path("sender") String sender);

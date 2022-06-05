@@ -37,11 +37,11 @@ public class ExamService {
     return instanceService;
   }
 
-  public List<Exam> getExamsCall(Integer exam) throws ApiException {
+  public List<Exam> getExamsCall(int course, String group) throws ApiException {
     Response<List<Exam>> examsResponse;
 
     try {
-      examsResponse = apiService.getExamsCall(exam).execute();
+      examsResponse = apiService.getExamsCall(course, group).execute();
 
       if (examsResponse.isSuccessful()) {
         return examsResponse.body();

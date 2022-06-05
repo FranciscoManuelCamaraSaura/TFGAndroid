@@ -31,6 +31,6 @@ public interface MakesDAO {
   @Query("SELECT exam FROM makes WHERE student = :student_id")
   List<Integer> getExam(Integer student_id);
 
-  @Query("SELECT note FROM makes WHERE student = :student_id AND exam = :exam_id")
-  Double getNote(Integer student_id, Integer exam_id);
+  @Query("SELECT note FROM makes WHERE exam = :exam_id")
+  Double getNote(Integer exam_id);
 }

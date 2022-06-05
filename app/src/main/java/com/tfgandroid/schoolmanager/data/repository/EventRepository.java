@@ -9,14 +9,18 @@
 package com.tfgandroid.schoolmanager.data.repository;
 
 import android.app.Application;
+import com.tfgandroid.schoolmanager.data.access.api.service.EventService;
+import com.tfgandroid.schoolmanager.data.access.api.service.exceptions.ApiException;
 import com.tfgandroid.schoolmanager.data.access.database.AppDatabase;
 import com.tfgandroid.schoolmanager.data.access.database.dao.EventDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.SchoolDAO;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Event;
 import com.tfgandroid.schoolmanager.data.access.database.entities.School;
+import java.util.List;
 
 public class EventRepository {
   private static EventRepository instance;
+  private static EventService eventService;
   private final SchoolDAO schoolDao;
   private final EventDAO eventDao;
 
@@ -25,6 +29,7 @@ public class EventRepository {
 
     schoolDao = appDatabase.schoolDAO();
     eventDao = appDatabase.eventDAO();
+    eventService = EventService.getInstanceService(application);
   }
 
   public static EventRepository getInstance(Application application) {
@@ -49,5 +54,15 @@ public class EventRepository {
         }
       }
     }
+  }
+
+  public List<Event> getEvents(int school, int student) throws ApiException {
+    List<Event> events = eventService.getEventsCall(school, student);
+
+    for (Event event : events) {
+      insert(event);
+    }
+
+    return events;
   }
 }

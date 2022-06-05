@@ -9,6 +9,8 @@
 package com.tfgandroid.schoolmanager.data.repository;
 
 import android.app.Application;
+import com.tfgandroid.schoolmanager.data.access.api.service.ExamService;
+import com.tfgandroid.schoolmanager.data.access.api.service.exceptions.ApiException;
 import com.tfgandroid.schoolmanager.data.access.database.AppDatabase;
 import com.tfgandroid.schoolmanager.data.access.database.dao.CourseDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.EventDAO;
@@ -20,9 +22,11 @@ import com.tfgandroid.schoolmanager.data.access.database.entities.Event;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Exam;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Group;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Subject;
+import java.util.List;
 
 public class ExamRepository {
   private static ExamRepository instance;
+  private static ExamService examService;
   private final CourseDAO courseDao;
   private final GroupDAO groupDao;
   private final EventDAO eventDao;
@@ -37,6 +41,7 @@ public class ExamRepository {
     eventDao = appDatabase.eventDAO();
     subjectDao = appDatabase.subjectDAO();
     examDAO = appDatabase.examDAO();
+    examService = ExamService.getInstanceService(application);
   }
 
   public static ExamRepository getInstance(Application application) {
@@ -48,16 +53,9 @@ public class ExamRepository {
   }
 
   public void insert(Exam newExam) {
-    Group group =
-        groupDao.getGroup(
-            newExam.getCourse_id(),
-            newExam.getGroup_words());
-
-    Course course =
-        courseDao.getCourseById(newExam.getCourse_id());
-
+    Group group = groupDao.getGroup(newExam.getCourse_id(), newExam.getGroup_words());
+    Course course = courseDao.getCourseById(newExam.getCourse_id());
     Event event = eventDao.getEvent(newExam.getEvent(), course.getSchool());
-
     Subject subject = subjectDao.getSubject(newExam.getSubject());
 
     if (group != null && event != null && subject != null) {
@@ -69,5 +67,17 @@ public class ExamRepository {
         examDAO.update(newExam);
       }
     }
+  }
+
+  public void getExams(int course, String group) throws ApiException {
+    List<Exam> exams = examService.getExamsCall(course, group);
+
+    for (Exam exam : exams) {
+      insert(exam);
+    }
+  }
+
+  public List<Exam> getSubjectExams(String subjectCode) {
+    return examDAO.getSubjectExam(subjectCode);
   }
 }

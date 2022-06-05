@@ -195,8 +195,13 @@
     <fragment
         android:id="@+id/subjectRecord"
         android:name="com.tfgandroid.schoolmanager.tfg.fragment.SubjectRecord"
-        android:label="subject_record_fragment"
-        tools:layout="@layout/subject_record_fragment" />
+        android:label="@string/record_title"
+        tools:layout="@layout/subject_record_fragment">
+
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/messagesFragment"

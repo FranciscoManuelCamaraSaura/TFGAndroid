@@ -16,8 +16,12 @@ import com.tfgandroid.schoolmanager.data.access.database.entities.Impart;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Manager;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Person;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Student;
+import com.tfgandroid.schoolmanager.data.repository.AlertRepository;
+import com.tfgandroid.schoolmanager.data.repository.EventRepository;
+import com.tfgandroid.schoolmanager.data.repository.ExamRepository;
 import com.tfgandroid.schoolmanager.data.repository.GroupHavePreceptorRepository;
 import com.tfgandroid.schoolmanager.data.repository.ImpartRepository;
+import com.tfgandroid.schoolmanager.data.repository.MakesRepository;
 import com.tfgandroid.schoolmanager.data.repository.ManagerRepository;
 import com.tfgandroid.schoolmanager.data.repository.MessageRepository;
 import com.tfgandroid.schoolmanager.data.repository.PersonRepository;
@@ -27,8 +31,12 @@ import com.tfgandroid.schoolmanager.data.repository.TeacherRepository;
 import java.util.List;
 
 public class MainMenuViewModel extends AndroidViewModel {
+  private final AlertRepository alertRepository;
   private final GroupHavePreceptorRepository groupHavePreceptorRepository;
+  private final EventRepository eventRepository;
+  private final ExamRepository examRepository;
   private final ImpartRepository impartRepository;
+  private final MakesRepository makesRepository;
   private final ManagerRepository managerRepository;
   private final MessageRepository messageRepository;
   private final PersonRepository personRepository;
@@ -39,8 +47,13 @@ public class MainMenuViewModel extends AndroidViewModel {
 
   public MainMenuViewModel(Application application) {
     super(application);
+
+    alertRepository = AlertRepository.getInstance(application);
     groupHavePreceptorRepository = GroupHavePreceptorRepository.getInstance(application);
+    eventRepository = EventRepository.getInstance(application);
+    examRepository = ExamRepository.getInstance(application);
     impartRepository = ImpartRepository.getInstance(application);
+    makesRepository = MakesRepository.getInstance(application);
     managerRepository = ManagerRepository.getInstance(application);
     messageRepository = MessageRepository.getInstance(application);
     personRepository = PersonRepository.getInstance(application);
@@ -74,7 +87,11 @@ public class MainMenuViewModel extends AndroidViewModel {
                   impartRepository.insert(impart);
                 }
 
-                // falta recuperar makes y events
+                eventRepository.getEvents(idSchool, student.getId());
+                examRepository.getExams(student.getCourse_id(), student.getGroup_words());
+                makesRepository.getNotes(student.getId());
+                alertRepository.getAlertsReceived(legalGuardian);
+
               } catch (ApiException e) {
                 setType(e.getType());
               }

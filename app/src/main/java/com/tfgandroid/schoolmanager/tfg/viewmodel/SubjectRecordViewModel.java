@@ -8,8 +8,47 @@
 
 package com.tfgandroid.schoolmanager.tfg.viewmodel;
 
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
+import com.tfgandroid.schoolmanager.data.access.api.error.TypeError;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Exam;
+import com.tfgandroid.schoolmanager.data.repository.ExamRepository;
+import com.tfgandroid.schoolmanager.data.repository.MakesRepository;
+import java.util.List;
 
-public class SubjectRecordViewModel extends ViewModel {
-  // TODO: Implement the ViewModel
+public class SubjectRecordViewModel extends AndroidViewModel {
+  private final ExamRepository examRepository;
+  private final MakesRepository makesRepository;
+  private TypeError type;
+
+  public SubjectRecordViewModel(Application application) {
+    super(application);
+
+    examRepository = ExamRepository.getInstance(application);
+    makesRepository = MakesRepository.getInstance(application);
+  }
+
+  public MutableLiveData<List<String>> getNotes(String subjectCode) {
+    MutableLiveData<List<String>> mutableLiveData = new MutableLiveData<>();
+
+    new Thread(
+            () -> {
+              List<Exam> exams = examRepository.getSubjectExams(subjectCode);
+              List<String> notes = makesRepository.getSubjectNotes(exams);
+
+              mutableLiveData.postValue(notes);
+            })
+        .start();
+
+    return mutableLiveData;
+  }
+
+  public TypeError getType() {
+    return type;
+  }
+
+  public void setType(TypeError type) {
+    this.type = type;
+  }
 }
