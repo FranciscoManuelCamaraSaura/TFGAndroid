@@ -66,9 +66,7 @@ public class Directives extends Fragment {
       @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     DirectiveListFragmentBinding directiveListFragmentBinding =
         DirectiveListFragmentBinding.inflate(inflater, container, false);
-
     View view = directiveListFragmentBinding.getRoot();
-
     Context context = view.getContext();
     RecyclerView recyclerView = directiveListFragmentBinding.list;
 

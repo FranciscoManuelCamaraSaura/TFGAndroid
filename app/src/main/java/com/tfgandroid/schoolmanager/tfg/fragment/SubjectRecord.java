@@ -21,7 +21,6 @@ import com.tfgandroid.schoolmanager.databinding.SubjectRecordFragmentBinding;
 import com.tfgandroid.schoolmanager.tfg.viewmodel.SubjectRecordViewModel;
 
 public class SubjectRecord extends Fragment {
-  private SubjectRecordViewModel mViewModel;
   private TextView textViewFirstTrimester;
   private TextView textViewSecondTrimester;
   private TextView textViewThirdTrimester;

@@ -83,6 +83,10 @@
             app:destination="@id/teachers" />
 
         <action
+            android:id="@+id/action_mainMenu_to_events"
+            app:destination="@id/calendar" />
+
+        <action
             android:id="@+id/action_mainMenu_to_messages"
             app:destination="@id/messagesFragment" />
 
@@ -370,4 +374,26 @@
         android:name="com.tfgandroid.schoolmanager.tfg.fragment.Alerts"
         android:label="@string/side_menu_alerts"
         tools:layout="@layout/alert_list_fragment" />
+
+    <fragment
+        android:id="@+id/calendar"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Events"
+        android:label="@string/calendar_event_calendar"
+        tools:layout="@layout/event_list_fragment">
+
+        <action
+            android:id="@+id/action_events_to_event"
+            app:destination="@id/event" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/event"
+        android:name="com.tfgandroid.schoolmanager.tfg.fragment.Event"
+        android:label="@string/event_title"
+        tools:layout="@layout/event_fragment">
+
+        <argument
+            android:name="event"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -15,6 +15,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Event;
+import java.util.List;
 
 @Dao
 public interface EventDAO {
@@ -27,6 +28,15 @@ public interface EventDAO {
   @Delete
   void delete(Event event);
 
+  @Query("SELECT * FROM event WHERE id = :event_id")
+  Event getEvent(int event_id);
+
   @Query("SELECT * FROM event WHERE id = :event_id AND school = :school_id")
   Event getEvent(int event_id, int school_id);
+
+  @Query("SELECT * FROM event WHERE date = :date")
+  List<Event> getEvents(long date);
+
+  @Query("SELECT * FROM event")
+  List<Event> getAllEvents();
 }

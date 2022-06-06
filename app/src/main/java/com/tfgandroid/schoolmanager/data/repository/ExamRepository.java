@@ -69,6 +69,10 @@ public class ExamRepository {
     }
   }
 
+  public Exam getExam(int exam) {
+    return examDAO.getExam(exam);
+  }
+
   public void getExams(int course, String group) throws ApiException {
     List<Exam> exams = examService.getExamsCall(course, group);
 

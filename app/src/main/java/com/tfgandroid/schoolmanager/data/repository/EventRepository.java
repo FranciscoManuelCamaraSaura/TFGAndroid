@@ -21,8 +21,8 @@ import java.util.List;
 public class EventRepository {
   private static EventRepository instance;
   private static EventService eventService;
-  private final SchoolDAO schoolDao;
   private final EventDAO eventDao;
+  private final SchoolDAO schoolDao;
 
   private EventRepository(Application application) {
     AppDatabase appDatabase = AppDatabase.getInstance(application);
@@ -56,13 +56,19 @@ public class EventRepository {
     }
   }
 
-  public List<Event> getEvents(int school, int student) throws ApiException {
+  public void getEvents(int school, int student) throws ApiException {
     List<Event> events = eventService.getEventsCall(school, student);
 
     for (Event event : events) {
       insert(event);
     }
+  }
 
-    return events;
+  public Event getEvent(int event) {
+    return eventDao.getEvent(event);
+  }
+
+  public List<Event> getEvents() {
+    return eventDao.getAllEvents();
   }
 }

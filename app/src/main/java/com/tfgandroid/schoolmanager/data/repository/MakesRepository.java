@@ -73,6 +73,10 @@ public class MakesRepository {
     }
   }
 
+  public Double getNote(int exam) {
+    return makesDAO.getNote(exam);
+  }
+
   public void getNotes(int student) throws ApiException {
     List<Makes> makes = makesService.getNotes(student);
 

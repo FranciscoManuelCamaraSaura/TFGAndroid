@@ -26,7 +26,7 @@
     <string name="main_menu_title">Main menu</string>
     <string name="main_menu_subjects">Subjects</string>
     <string name="main_menu_teachers">Teachers</string>
-    <string name="main_menu_timetable">Timetable</string>
+    <string name="main_menu_timetable">Calendar</string>
     <string name="main_menu_messages">Messages</string>
     <string name="main_menu_record">Record</string>
     <string name="main_menu_center_information">Center information</string>
@@ -92,6 +92,28 @@
     <string name="developer_information_name">Name: Francisco Manuel Cámara Saura</string>
     <string name="developer_information_email">Email: fmcs@alu.ua.es</string>
     <string name="developer_information_description">Description: Final degree project for the Computer Engineering career at the University of Alicante.</string>
+
+    // Literals of the calendar events.
+    <string name="calendar_event_calendar">Calendar</string>
+    <string name="calendar_event_name">Name:</string>
+    <string name="calendar_event_description">Description:</string>
+
+    // Literals of the event.
+    <string name="event_title">Event</string>
+    <string name="event_details">Event details:</string>
+    <string name="event_name">Name:</string>
+    <string name="event_description">Description:</string>
+    <string name="event_duration">Duration:</string>
+    <string name="event_hour">hour</string>
+    <string name="event_hours">hours</string>
+    <string name="event_responsible">Responsible:</string>
+
+    // Literals of the exam.
+    <string name="exam_title">Exam details:</string>
+    <string name="exam_subject">Subject:</string>
+    <string name="exam_type">Type:</string>
+    <string name="exam_evaluation">Evaluation:</string>
+    <string name="makes_note">Note:</string>
 
     // Literals of the subject.
     <string name="subject_title">Subject data</string>

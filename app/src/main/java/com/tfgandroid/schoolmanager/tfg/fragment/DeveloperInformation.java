@@ -8,15 +8,14 @@
 
 package com.tfgandroid.schoolmanager.tfg.fragment;
 
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tfgandroid.schoolmanager.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import com.tfgandroid.schoolmanager.databinding.DeveloperInformationFragmentBinding;
 import com.tfgandroid.schoolmanager.tfg.viewmodel.DeveloperInformationViewModel;
 
 public class DeveloperInformation extends Fragment {
@@ -31,13 +30,9 @@ public class DeveloperInformation extends Fragment {
       @NonNull LayoutInflater inflater,
       @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.developer_information_fragment, container, false);
-  }
+    DeveloperInformationFragmentBinding developerInformationFragmentBinding =
+        DeveloperInformationFragmentBinding.inflate(inflater, container, false);
 
-  @Override
-  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);
-    mViewModel = ViewModelProviders.of(this).get(DeveloperInformationViewModel.class);
-    // TODO: Use the ViewModel
+      return developerInformationFragmentBinding.getRoot();
   }
 }

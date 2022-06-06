@@ -109,7 +109,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
         break;
       case 3:
         Navigation.findNavController(activity, R.id.navigationHostFragment)
-            .navigate(R.id.toMainMenu);
+            .navigate(R.id.action_mainMenu_to_events);
         break;
       case 4:
         Navigation.findNavController(activity, R.id.navigationHostFragment)

@@ -27,7 +27,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
 import com.tfgandroid.schoolmanager.data.access.database.entities.LegalGuardian;
 import com.tfgandroid.schoolmanager.data.preferences.Preferences;
 import com.tfgandroid.schoolmanager.databinding.AlertListFragmentBinding;
-import com.tfgandroid.schoolmanager.tfg.adapter.AlertsAdapter;
+import com.tfgandroid.schoolmanager.tfg.adapter.AlertAdapter;
 import com.tfgandroid.schoolmanager.tfg.viewmodel.AlertsViewModel;
 
 public class Alerts extends Fragment implements OnRefreshListener {
@@ -84,7 +84,7 @@ public class Alerts extends Fragment implements OnRefreshListener {
         .getAlerts(legalGuardian)
         .observe(
             getViewLifecycleOwner(),
-            alerts -> recyclerView.setAdapter(new AlertsAdapter(requireActivity(), alerts)));
+            alerts -> recyclerView.setAdapter(new AlertAdapter(requireActivity(), alerts)));
 
     swipeRefreshLayout = alertListFragmentBinding.swipeRefreshLayout;
 
@@ -112,7 +112,7 @@ public class Alerts extends Fragment implements OnRefreshListener {
             getViewLifecycleOwner(),
             alerts -> {
               swipeRefreshLayout.setRefreshing(false);
-              recyclerView.setAdapter(new AlertsAdapter(requireActivity(), alerts));
+              recyclerView.setAdapter(new AlertAdapter(requireActivity(), alerts));
             });
   }
 }

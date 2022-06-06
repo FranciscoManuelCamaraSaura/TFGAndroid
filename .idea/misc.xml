@@ -7,7 +7,8 @@
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/drawable-anydpi/ic_action_mail.xml" value="0.27708333333333335" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/activity_launcher.xml" value="0.264" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/alert_item_fragment.xml" value="0.22916666666666666" />
-        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/alert_list_fragment.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/alert_list_fragment.xml" value="0.176" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/calendar_fragment.xml" value="0.2" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/change_password_fragment.xml" value="0.264" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/close_session_dialog.xml" value="0.2609375" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/contact_us_dialog.xml" value="0.2609375" />
@@ -16,8 +17,13 @@
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/developer_information_fragment.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/directive_file_fragment.xml" value="0.264" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/directive_item_fragment.xml" value="0.3802083333333333" />
-        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/directive_list_fragment.xml" value="0.3802083333333333" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/directive_list_fragment.xml" value="0.4" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/edit_text_dialog.xml" value="0.24230072463768115" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/event_fragment.xml" value="0.246875" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/event_item_fragment.xml" value="0.6" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/event_list_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/fragment_calendar.xml" value="0.20969202898550723" />
+        <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/fragment_event_list.xml" value="0.264" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/help_fragment.xml" value="0.192481884057971" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/login_fragment.xml" value="0.264" />
         <entry key="..\:/Users/jackb/Desktop/TFG/TFGAndroid/app/src/main/res/layout/main_menu_item_fragment.xml" value="0.37681159420289856" />

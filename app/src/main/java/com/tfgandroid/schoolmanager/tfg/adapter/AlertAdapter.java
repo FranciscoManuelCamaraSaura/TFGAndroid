@@ -25,14 +25,14 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder> {
-  public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
-  public static final String LANGUAGE = "es";
-  public static final String COUNTRY = "ES";
+public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> {
+  private static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
+  private static final String LANGUAGE = "es";
+  private static final String COUNTRY = "ES";
   private final FragmentActivity fragmentActivity;
   private final List<Alert> alerts;
 
-  public AlertsAdapter(FragmentActivity fragmentActivity, List<Alert> alerts) {
+  public AlertAdapter(FragmentActivity fragmentActivity, List<Alert> alerts) {
     this.fragmentActivity = fragmentActivity;
     this.alerts = alerts;
   }

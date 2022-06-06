@@ -87,6 +87,28 @@
     <string name="developer_information_email">Correo electrónico: fmcs@alu.ua.es</string>
     <string name="developer_information_description">Descripción: Trabajo de fin de grado para la carrera de Ingeniería Informática de la Universidad de Alicante.</string>
 
+    //Literales del calendario de eventos.
+    <string name="calendar_event_calendar">Calendario</string>
+    <string name="calendar_event_name">Nombre: </string>
+    <string name="calendar_event_description">Descripción: </string>
+
+    //Literales del evento.
+    <string name="event_title">Evento</string>
+    <string name="event_details">Detalles del evento:</string>
+    <string name="event_name">Nombre:</string>
+    <string name="event_description">Descripción:</string>
+    <string name="event_duration">Duración:</string>
+    <string name="event_hour">hora</string>
+    <string name="event_hours">horas</string>
+    <string name="event_responsible">Responsable</string>
+
+    // Literals del examen.
+    <string name="exam_title">Detalles del examen:</string>
+    <string name="exam_subject">Asignatura:</string>
+    <string name="exam_type">Tipo:</string>
+    <string name="exam_evaluation">Evaluación:</string>
+    <string name="makes_note">Nota:</string>
+
     // Literales de la asignatura.
     <string name="subject_title">Datos de la asignatura</string>
     <string name="subject_teacher">Profesor</string>
