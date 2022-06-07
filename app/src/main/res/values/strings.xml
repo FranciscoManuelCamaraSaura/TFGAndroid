@@ -114,6 +114,7 @@
     <string name="exam_type">Type:</string>
     <string name="exam_evaluation">Evaluation:</string>
     <string name="makes_note">Note:</string>
+    <string name="makes_unassessed">Unassessed.</string>
 
     // Literals of the subject.
     <string name="subject_title">Subject data</string>

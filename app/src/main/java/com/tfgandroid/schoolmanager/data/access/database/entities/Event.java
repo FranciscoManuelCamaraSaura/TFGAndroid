@@ -32,11 +32,11 @@ import java.util.Objects;
       @ForeignKey(
           entity = Person.class,
           parentColumns = {"dni"},
-          childColumns = {"responsible"},
+          childColumns = {"responsable"},
           onDelete = CASCADE,
           onUpdate = CASCADE)
     },
-    indices = {@Index({"id"}), @Index("school"), @Index("responsible")})
+    indices = {@Index({"id"}), @Index("school"), @Index("responsable")})
 public class Event {
   @PrimaryKey private final int id;
   private String name;
@@ -48,7 +48,7 @@ public class Event {
   private Date date;
 
   private int school;
-  private String responsible;
+  private String responsable;
 
   public Event(
       int id,
@@ -57,14 +57,14 @@ public class Event {
       int duration,
       @NonNull Date date,
       int school,
-      String responsible) {
+      String responsable) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.duration = duration;
     this.date = date;
     this.school = school;
-    this.responsible = responsible;
+    this.responsable = responsable;
   }
 
   public int getId() {
@@ -112,12 +112,12 @@ public class Event {
     this.school = school;
   }
 
-  public String getResponsible() {
-    return responsible;
+  public String getResponsable() {
+    return responsable;
   }
 
-  public void setResponsible(String responsible) {
-    this.responsible = responsible;
+  public void setResponsable(String responsable) {
+    this.responsable = responsable;
   }
 
   @Override
@@ -135,7 +135,7 @@ public class Event {
         && getName().equals(event.getName())
         && getDescription().equals(event.getDescription())
         && getDate().equals(event.getDate())
-        && getResponsible().equals(event.getResponsible());
+        && getResponsable().equals(event.getResponsable());
   }
 
   @Override
@@ -147,7 +147,7 @@ public class Event {
         getDuration(),
         getDate(),
         getSchool(),
-        getResponsible());
+        getResponsable());
   }
 
     @NonNull
@@ -168,8 +168,8 @@ public class Event {
         + date
         + ", school="
         + school
-        + ", responsible='"
-        + responsible
+        + ", responsable='"
+        + responsable
         + '\''
         + '}';
   }

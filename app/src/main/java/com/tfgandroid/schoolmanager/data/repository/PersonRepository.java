@@ -18,10 +18,8 @@ import com.tfgandroid.schoolmanager.data.access.database.dao.PersonDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.StudentDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.SubjectDAO;
 import com.tfgandroid.schoolmanager.data.access.database.dao.TeacherDAO;
-import com.tfgandroid.schoolmanager.data.access.database.entities.LegalGuardian;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Manager;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Person;
-import com.tfgandroid.schoolmanager.data.access.database.entities.Student;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Subject;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Teacher;
 import java.util.ArrayList;
@@ -168,5 +166,9 @@ public class PersonRepository {
     }
 
     return subjects;
+  }
+
+  public String getPersonName(String person) {
+    return personDao.getPerson(person).getName();
   }
 }

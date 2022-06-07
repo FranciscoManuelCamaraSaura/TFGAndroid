@@ -69,8 +69,8 @@ public class ExamRepository {
     }
   }
 
-  public Exam getExam(int exam) {
-    return examDAO.getExam(exam);
+  public Exam getExam(int event) {
+    return examDAO.getEvent(event);
   }
 
   public void getExams(int course, String group) throws ApiException {

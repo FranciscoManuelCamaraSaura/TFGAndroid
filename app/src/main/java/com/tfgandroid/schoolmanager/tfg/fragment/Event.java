@@ -83,8 +83,10 @@ public class Event extends Fragment {
               textViewEventName.setText(event.getName());
               textViewEventDescription.setText(event.getDescription());
               textViewEventDuration.setText(duration);
-              // Recuperar nombre del responsable
-              textViewEventResponsible.setText(event.getResponsible());
+
+              eventViewModel
+                  .getResponsible(event.getResponsable())
+                  .observe(getViewLifecycleOwner(), name -> textViewEventResponsible.setText(name));
 
               eventViewModel
                   .getExam(event.getId())
@@ -92,8 +94,12 @@ public class Event extends Fragment {
                       getViewLifecycleOwner(),
                       exam -> {
                         if (exam != null) {
-                          // Recuperar el nombre de la asignatura
-                          textViewExamSubject.setText(exam.getSubject());
+                          eventViewModel
+                              .getSubject(exam.getSubject())
+                              .observe(
+                                  getViewLifecycleOwner(),
+                                  subject -> textViewExamSubject.setText(subject));
+
                           textViewEventType.setText(exam.getType_exam().toString());
                           textViewEventEvaluation.setText(exam.getEvaluation().toString());
 
@@ -101,7 +107,14 @@ public class Event extends Fragment {
                               .getNote(exam.getId())
                               .observe(
                                   getViewLifecycleOwner(),
-                                  note -> textViewEventNote.setText(String.valueOf(note)));
+                                  note -> {
+                                    if (note != null) {
+                                      textViewEventNote.setText(String.valueOf(note));
+                                    } else {
+                                      textViewEventNote.setText(
+                                          getResources().getString(R.string.makes_unassessed));
+                                    }
+                                  });
                         } else {
                           textViewExamTitle.setVisibility(View.GONE);
                           linearLayoutExam.setVisibility(View.GONE);

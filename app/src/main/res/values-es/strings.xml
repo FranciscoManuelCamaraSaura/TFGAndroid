@@ -108,6 +108,7 @@
     <string name="exam_type">Tipo:</string>
     <string name="exam_evaluation">Evaluación:</string>
     <string name="makes_note">Nota:</string>
+    <string name="makes_unassessed">Sin evaluar.</string>
 
     // Literales de la asignatura.
     <string name="subject_title">Datos de la asignatura</string>

@@ -28,8 +28,11 @@ public interface ExamDAO {
   @Delete
   void delete(Exam exam);
 
-  @Query("SELECT * FROM exam WHERE id = :exam_id")
-  Exam getExam(int exam_id);
+  @Query("SELECT * FROM exam WHERE id = :exam")
+  Exam getExam(int exam);
+
+  @Query("SELECT * FROM exam WHERE event = :event")
+  Exam getEvent(int event);
 
   @Query("SELECT * FROM exam WHERE subject = :subject")
   List<Exam> getSubjectExam(String subject);

@@ -105,4 +105,8 @@ public class SubjectRepository {
 
     return personDao.getPerson(teacher);
   }
+
+  public String getSubjectName(String code) {
+    return subjectDao.getSubject(code).getName();
+  }
 }
