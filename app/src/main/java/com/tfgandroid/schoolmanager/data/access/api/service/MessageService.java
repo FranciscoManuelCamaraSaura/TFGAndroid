@@ -97,15 +97,17 @@ public class MessageService {
     }
   }
 
-  public void readMessage(Message message) throws ApiException {
-    Response<String> messageResponse;
+  public Message readMessage(Message message) throws ApiException {
+    Response<Message> messageResponse;
 
     try {
       messageResponse = apiService.setReadMessage(message.getId()).execute();
 
-      if (!messageResponse.isSuccessful()) {
-        throw TypeErrorConvert.parseError(messageResponse);
+      if (messageResponse.isSuccessful()) {
+        return messageResponse.body();
       }
+
+      throw TypeErrorConvert.parseError(messageResponse);
     } catch (IOException e) {
       ApiException apiException = new ApiException(TypeError.NEW_MESSAGES, e.getMessage());
 
@@ -115,15 +117,17 @@ public class MessageService {
     }
   }
 
-  public void replyMessage(Message message) throws ApiException {
-    Response<String> messageResponse;
+  public Message replyMessage(Message message) throws ApiException {
+    Response<Message> messageResponse;
 
     try {
       messageResponse = apiService.setReplyMessage(message.getId()).execute();
 
-      if (!messageResponse.isSuccessful()) {
-        throw TypeErrorConvert.parseError(messageResponse);
+      if (messageResponse.isSuccessful()) {
+        return messageResponse.body();
       }
+
+      throw TypeErrorConvert.parseError(messageResponse);
     } catch (IOException e) {
       ApiException apiException = new ApiException(TypeError.NEW_MESSAGES, e.getMessage());
 

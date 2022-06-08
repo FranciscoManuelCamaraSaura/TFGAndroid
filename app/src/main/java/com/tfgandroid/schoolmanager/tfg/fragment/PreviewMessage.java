@@ -135,7 +135,7 @@ public class PreviewMessage extends Fragment implements OnClickListener {
               text,
               legalGuardian.getPerson(),
               receiverDNI,
-              (previousMessage != 0) ? ID : previousMessage,
+              (previousMessage == 0) ? ID : previousMessage,
               READ,
               REPLY);
 

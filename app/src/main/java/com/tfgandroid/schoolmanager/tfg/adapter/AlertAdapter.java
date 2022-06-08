@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,11 +55,19 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
     AlertsViewModel alertsViewModel =
         new ViewModelProvider(fragmentActivity).get(AlertsViewModel.class);
 
-    holder.alert = alerts.get(position);
-    holder.alertType.setText(alerts.get(position).getMatter());
-    holder.dateAndHour.setText(simpleDateFormat.format(alerts.get(position).getSend_date()));
+    if (!alerts.get(position).isRead()) {
+      holder.alert = alerts.get(position);
+      holder.alertType.setText(alerts.get(position).getMatter());
+      holder.dateAndHour.setText(simpleDateFormat.format(alerts.get(position).getSend_date()));
 
-    holder.checkBox.setOnClickListener(view -> alertsViewModel.setReadAlert(alerts.get(position)));
+      holder.checkBox.setOnClickListener(
+          view -> {
+            holder.constraintLayout.setVisibility(View.GONE);
+            alertsViewModel.setReadAlert(alerts.get(position));
+          });
+    } else {
+        holder.checkBox.setVisibility(View.GONE);
+    }
   }
 
   @Override
@@ -70,6 +79,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
     public final View alertView;
     public Alert alert;
     public CheckBox checkBox;
+    public ConstraintLayout constraintLayout;
     public TextView alertType;
     public TextView dateAndHour;
 
@@ -81,6 +91,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
       alertView = view;
       alertType = alertItemFragmentBinding.alertType;
       checkBox = alertItemFragmentBinding.checkBox;
+      constraintLayout = alertItemFragmentBinding.constraintLayout;
       dateAndHour = alertItemFragmentBinding.dateAndHour;
     }
 

@@ -72,7 +72,6 @@ public class AlertRepository {
   }
 
   public void readAlert(Alert alert) throws ApiException {
-    alertService.readAlert(alert);
-    delete(alert);
+    delete(alertService.readAlert(alert));
   }
 }

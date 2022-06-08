@@ -57,15 +57,17 @@ public class AlertService {
     }
   }
 
-  public void readAlert(Alert alert) throws ApiException {
-    Response<String> alertResponse;
+  public Alert readAlert(Alert alert) throws ApiException {
+    Response<Alert> alertResponse;
 
     try {
       alertResponse = apiService.setReadAlert(alert.getId()).execute();
 
-      if (!alertResponse.isSuccessful()) {
-        throw TypeErrorConvert.parseError(alertResponse);
+      if (alertResponse.isSuccessful()) {
+        return alertResponse.body();
       }
+
+      throw TypeErrorConvert.parseError(alertResponse);
     } catch (IOException e) {
       ApiException apiException = new ApiException(TypeError.NEW_MESSAGES, e.getMessage());
 

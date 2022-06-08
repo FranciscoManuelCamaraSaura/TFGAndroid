@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">SchoolManager</string>
+    <string name="app_name" translatable="false">School Manager</string>
     <string name="app_logo" translatable="false">App Logo</string>
     <string name="user_image" translatable="false">User image</string>
     <string name="edit_logo" translatable="false">Edit Logo</string>

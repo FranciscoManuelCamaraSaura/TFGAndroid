@@ -56,7 +56,7 @@ public enum TypeError {
 
   @SerializedName("other")
   NETWORK(R.string.network_error),
-  @SerializedName("user")
+  @SerializedName("user_name")
   USERNAME(R.string.user_error),
   @SerializedName("password")
   PASSWORD(R.string.password_error),

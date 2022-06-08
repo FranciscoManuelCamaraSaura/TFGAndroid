@@ -94,20 +94,17 @@ public interface ApiService {
   @GET("alertReceived/{receiver}")
   Call<List<Alert>> getReceivedAlertsCall(@Path("receiver") String receiver);
 
-  @FormUrlEncoded
   @POST("messageRead")
-  Call<String> setReadMessage(@Field("id") Integer id);
+  Call<Message> setReadMessage(@Query("id") Integer id);
 
-  @FormUrlEncoded
   @POST("messageReply")
-  Call<String> setReplyMessage(@Field("id") Integer id);
+  Call<Message> setReplyMessage(@Query("id") Integer id);
 
   @POST("messageUpdate")
   Call<Message> updateData(@Body Message message);
 
-  @FormUrlEncoded
   @POST("alertRead")
-  Call<String> setReadAlert(@Field("id") Integer id);
+  Call<Alert> setReadAlert(@Query("id") Integer id);
 
   @FormUrlEncoded
   @POST("subjects")

@@ -85,6 +85,7 @@ public abstract class AppDatabase extends RoomDatabase {
   private static final int COLUMN_INDEX = 0;
   private static final String DATABASE_NAME = "school_database";
   private static final String QUERY = "SELECT name FROM sqlite_master WHERE type = 'table'";
+  private static final String SCHOOL = "school";
   private static AppDatabase instance;
 
   public static synchronized AppDatabase getInstance(Context context) {
@@ -104,11 +105,12 @@ public abstract class AppDatabase extends RoomDatabase {
 
       if (tablas.moveToFirst()) {
         while (!tablas.isAfterLast()) {
-          String tableName = tablas.getString(COLUMN_INDEX);
-          sqlDatabase.delete(tableName, null, null);
+          sqlDatabase.delete(tablas.getString(COLUMN_INDEX), null, null);
           tablas.moveToNext();
         }
       }
+
+      instance = null;
     }
   }
 

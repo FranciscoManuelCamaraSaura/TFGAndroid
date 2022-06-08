@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -93,8 +94,9 @@ public class TeacherFile extends Fragment implements OnClickListener {
               int i = 0;
 
               for (Subject subject : subjects) {
-                LayoutParams params =
-                    new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                RelativeLayout.LayoutParams params =
+                    new RelativeLayout.LayoutParams(
+                        LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                 TextView textView = new TextView(getContext());
 
                 textView.setLayoutParams(params);
@@ -106,7 +108,7 @@ public class TeacherFile extends Fragment implements OnClickListener {
 
                 textView.setOnClickListener(this);
 
-                linearLayoutSubjects.addView(textView);
+                linearLayoutSubjects.addView(textView, params);
                 i++;
               }
             });

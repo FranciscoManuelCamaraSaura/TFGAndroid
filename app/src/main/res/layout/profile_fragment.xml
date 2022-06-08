@@ -277,7 +277,7 @@
             android:id="@+id/buttonSaveChanges"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="64dp"
             android:enabled="false"
             android:text="@string/profile_save_changes"

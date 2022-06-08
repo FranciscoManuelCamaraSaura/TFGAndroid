@@ -126,13 +126,11 @@ public class MessageRepository {
   }
 
   public void readMessage(Message message) throws ApiException {
-    messageService.readMessage(message);
-    insert(message);
+    insert(messageService.readMessage(message));
   }
 
   public void replyMessage(Message message) throws ApiException {
-    messageService.replyMessage(message);
-    insert(message);
+    insert(messageService.replyMessage(message));
   }
 
   public void updateData(Message message) throws ApiException {
