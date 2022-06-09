@@ -36,10 +36,9 @@ import java.util.Objects;
           onDelete = CASCADE,
           onUpdate = CASCADE)
     },
-    indices = {@Index({"id", "date"}), @Index("sender"), @Index("receiver")})
+    indices = {@Index("id"), @Index("sender"), @Index("receiver")})
 public class Message {
-    @PrimaryKey
-    private final int id;
+  @PrimaryKey private final int id;
 
   @TypeConverters(DataTypeConvert.class)
   @NonNull
@@ -47,6 +46,7 @@ public class Message {
 
   private String matter;
   private String text;
+
   @NonNull private String sender;
   @NonNull private String receiver;
 

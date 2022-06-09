@@ -106,7 +106,7 @@ public class MessageRepository {
     return messagesReceived;
   }
 
-  public List<Message> getMessagesReceivedSaved(String receiver) throws ApiException {
+  public List<Message> getMessagesReceivedSaved(String receiver) {
     return messageDao.getMessagesReceived(receiver);
   }
 

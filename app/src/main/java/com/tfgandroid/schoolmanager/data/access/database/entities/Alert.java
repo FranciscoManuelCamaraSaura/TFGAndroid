@@ -36,7 +36,7 @@ import java.util.Objects;
           onDelete = CASCADE,
           onUpdate = CASCADE)
     },
-    indices = {@Index({"id", "send_date"}), @Index("sender"), @Index("receiver")})
+    indices = {@Index("id"), @Index("sender"), @Index("receiver")})
 public class Alert {
   @PrimaryKey private final int id;
 
@@ -49,6 +49,7 @@ public class Alert {
   private Date read_date;
 
   private String matter;
+
   @NonNull private String sender;
   @NonNull private String receiver;
 

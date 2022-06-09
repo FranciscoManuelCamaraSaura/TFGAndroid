@@ -74,4 +74,12 @@ public class AlertRepository {
   public void readAlert(Alert alert) throws ApiException {
     delete(alertService.readAlert(alert));
   }
+
+  public List<Alert> getAlertsReceivedSaved(String receiver) {
+    return alertDAO.getAlertsReceived(receiver);
+  }
+
+  public List<Alert> getAlertsReceivedLive(String receiver) throws ApiException {
+    return alertService.getReceivedAlerts(receiver);
+  }
 }

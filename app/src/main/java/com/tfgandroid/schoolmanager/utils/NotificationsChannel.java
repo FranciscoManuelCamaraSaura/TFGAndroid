@@ -21,10 +21,16 @@ import androidx.navigation.NavDeepLinkBuilder;
 import com.tfgandroid.schoolmanager.R;
 import com.tfgandroid.schoolmanager.tfg.activity.Launcher;
 import com.tfgandroid.schoolmanager.tfg.fragment.ReceiverMessage;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class NotificationsChannel extends ContextWrapper {
   private static final String CHANNEL_ID = "com.tfgandroid.schoolmanager";
   private static final String CHANNEL_NAME = "@string/app_name";
+  private static final String LANGUAGE = "es";
+  private static final String COUNTRY = "ES";
+  private static final String DATE_FORMAT = "dd/MM/yyyy";
   private static final String MESSAGE_ID = "messageId";
   private NotificationManager notificationManager;
 
@@ -54,7 +60,8 @@ public class NotificationsChannel extends ContextWrapper {
     return notificationManager;
   }
 
-  public void createNotification(Context context, Bundle bundle, String title, String content) {
+  public void createMessageNotification(
+      Context context, Bundle bundle, String title, String content) {
     Intent intent = new Intent(this, ReceiverMessage.class);
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -71,6 +78,35 @@ public class NotificationsChannel extends ContextWrapper {
             .setSmallIcon(R.drawable.notification_message_icon)
             .setContentTitle(title)
             .setContentText(content)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true);
+
+    showNotification(builder, bundle);
+  }
+
+  public void createAlertNotification(
+      Context context, Bundle bundle, String matter, Date send_date) {
+    SimpleDateFormat simpleDateFormat =
+        new SimpleDateFormat(DATE_FORMAT, new Locale(LANGUAGE, COUNTRY));
+
+    Intent intent = new Intent(this, ReceiverMessage.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+    PendingIntent pendingIntent =
+        new NavDeepLinkBuilder(context)
+            .setComponentName(Launcher.class)
+            .setGraph(R.navigation.navigation)
+            .setDestination(R.id.alerts)
+            .setArguments(bundle)
+            .createPendingIntent();
+
+    NotificationCompat.Builder builder =
+        new NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.drawable.notification_alert_icon)
+            .setContentTitle(simpleDateFormat.format(send_date))
+            .setContentText(matter)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
             .setContentIntent(pendingIntent)

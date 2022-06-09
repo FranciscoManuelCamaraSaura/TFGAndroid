@@ -40,6 +40,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.tfgandroid.schoolmanager.R;
 import com.tfgandroid.schoolmanager.data.access.database.AppDatabase;
+import com.tfgandroid.schoolmanager.data.access.database.entities.Alert;
 import com.tfgandroid.schoolmanager.data.access.database.entities.LegalGuardian;
 import com.tfgandroid.schoolmanager.data.access.database.entities.Message;
 import com.tfgandroid.schoolmanager.data.preferences.Preferences;
@@ -56,7 +57,10 @@ import com.tfgandroid.schoolmanager.tfg.viewmodel.LauncherViewModel;
 import com.tfgandroid.schoolmanager.utils.NotificationService;
 import com.tfgandroid.schoolmanager.utils.NotificationsChannel;
 import com.tfgandroid.schoolmanager.utils.Utils;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Launcher extends AppCompatActivity
@@ -65,18 +69,36 @@ public class Launcher extends AppCompatActivity
         OnDestinationChangedListener {
   public static final boolean INCLUSIVE = false;
   public static final int INDEX = 0;
+  public static final String ALERT_ID = "alertId";
   public static final String MESSAGE_ID = "messageId";
   public static final String REQUEST_KEY = "PREVIEW_MESSAGE";
+  private static final String LANGUAGE = "es";
+  private static final String COUNTRY = "ES";
+  private static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
   private AlertDialog dialog;
   private AppBarConfiguration appBarConfiguration;
   private boolean serviceBound;
   private DrawerLayout drawerLayout;
   private LauncherViewModel launcherViewModel;
+  private List<Alert> alertsSaved;
   private List<Message> messagesSaved;
   private NavController navController;
   private NavHostFragment navHostFragment;
   private NavigationView navigationView;
   private NotificationService notificationService;
+  private final ServiceConnection serviceConnection =
+      new ServiceConnection() {
+        public void onServiceConnected(ComponentName className, IBinder service) {
+          notificationService = ((NotificationService.NotificationBinder) service).getService();
+          notificationService.background();
+          serviceBound = true;
+        }
+
+        public void onServiceDisconnected(ComponentName className) {
+          notificationService = null;
+          serviceBound = false;
+        }
+      };
   private Toolbar toolbar;
 
   @Override
@@ -130,7 +152,7 @@ public class Launcher extends AppCompatActivity
     LegalGuardianRepository.getInstance(getApplication());
   }
 
-  /*@Override
+  @Override
   protected void onStart() {
     super.onStart();
 
@@ -139,13 +161,12 @@ public class Launcher extends AppCompatActivity
     LegalGuardian legalGuardian = Preferences.getLoggedLegalGuardian(sharedPreferences);
 
     if (Utils.neitherEmptyNorNull(legalGuardian)) {
-    Intent intent = new Intent(this, NotificationService.class);
+      Intent intent = new Intent(this, NotificationService.class);
 
-    startService(intent);
-    bindService(intent, serviceConnection, 0);
-
+      startService(intent);
+      bindService(intent, serviceConnection, 0);
     }
-  }*/
+  }
 
   @Override
   protected void onResume() {
@@ -159,10 +180,11 @@ public class Launcher extends AppCompatActivity
 
     if (Utils.neitherEmptyNorNull(legalGuardian)) {
       checkNewMessage();
+      checkNewAlert();
     }
   }
 
-  /*@Override
+  @Override
   protected void onStop() {
     super.onStop();
 
@@ -171,18 +193,18 @@ public class Launcher extends AppCompatActivity
     LegalGuardian legalGuardian = Preferences.getLoggedLegalGuardian(sharedPreferences);
 
     if (Utils.neitherEmptyNorNull(legalGuardian)) {
-    if (serviceBound) {
-      if (notificationService.isServiceRunning()) {
-        notificationService.startService(this, launcherViewModel, legalGuardian);
-      } else {
-        stopService(new Intent(this, NotificationService.class));
-      }
+      if (serviceBound) {
+        if (notificationService.isServiceRunning()) {
+          notificationService.startService(this, launcherViewModel, legalGuardian);
+        } else {
+          stopService(new Intent(this, NotificationService.class));
+        }
 
-      unbindService(serviceConnection);
-      serviceBound = false;
+        unbindService(serviceConnection);
+        serviceBound = false;
+      }
     }
-    }
-  }*/
+  }
 
   @Override
   protected void onPause() {
@@ -196,22 +218,9 @@ public class Launcher extends AppCompatActivity
 
     if (Utils.neitherEmptyNorNull(legalGuardian)) {
       checkNewMessage();
+      checkNewAlert();
     }
   }
-
-  /*private final ServiceConnection serviceConnection =
-      new ServiceConnection() {
-        public void onServiceConnected(ComponentName className, IBinder service) {
-          notificationService = ((NotificationService.NotificationBinder) service).getService();
-          notificationService.background();
-          serviceBound = true;
-        }
-
-        public void onServiceDisconnected(ComponentName className) {
-          notificationService = null;
-          serviceBound = false;
-        }
-      };*/
 
   @Override
   public void onBackPressed() {
@@ -302,6 +311,10 @@ public class Launcher extends AppCompatActivity
   private void checkNewMessage() {
     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     LegalGuardian legalGuardian = Preferences.getLoggedLegalGuardian(sharedPreferences);
+    SimpleDateFormat simpleDateFormat =
+        new SimpleDateFormat(DATE_FORMAT, new Locale(LANGUAGE, COUNTRY));
+    String date = simpleDateFormat.format(new Date(System.currentTimeMillis()));
+
     launcherViewModel = new ViewModelProvider(this).get(LauncherViewModel.class);
 
     launcherViewModel
@@ -315,7 +328,30 @@ public class Launcher extends AppCompatActivity
               Message message = messages.get(messages.size() - 1);
 
               if (!messagesSaved.contains(message) && !message.isRead()) {
-                setNotification(message);
+                setMessageNotification(message);
+              }
+            });
+  }
+
+  private void checkNewAlert() {
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    LegalGuardian legalGuardian = Preferences.getLoggedLegalGuardian(sharedPreferences);
+    SimpleDateFormat simpleDateFormat =
+        new SimpleDateFormat(DATE_FORMAT, new Locale(LANGUAGE, COUNTRY));
+    String date = simpleDateFormat.format(new Date(System.currentTimeMillis()));
+
+    launcherViewModel = new ViewModelProvider(this).get(LauncherViewModel.class);
+
+    launcherViewModel.getAlertsSaved(legalGuardian).observe(this, alerts -> alertsSaved = alerts);
+
+    launcherViewModel
+        .getAlerts(legalGuardian)
+        .observeForever(
+            alerts -> {
+              Alert alert = alerts.get(alerts.size() - 1);
+
+              if (!alertsSaved.contains(alert) && !alert.isRead()) {
+                setAlertNotification(alert);
               }
             });
   }
@@ -377,13 +413,22 @@ public class Launcher extends AppCompatActivity
     headerName.setText(studentName);
   }
 
-  private void setNotification(Message message) {
+  private void setMessageNotification(Message message) {
     NotificationsChannel notification = new NotificationsChannel(this);
     Bundle bundle = new Bundle();
 
     bundle.putInt(MESSAGE_ID, message.getId());
 
-    notification.createNotification(this, bundle, message.getMatter(), message.getText());
+    notification.createMessageNotification(this, bundle, message.getMatter(), message.getText());
+  }
+
+  private void setAlertNotification(Alert alert) {
+    NotificationsChannel notification = new NotificationsChannel(this);
+    Bundle bundle = new Bundle();
+
+    bundle.putInt(ALERT_ID, alert.getId());
+
+    notification.createAlertNotification(this, bundle, alert.getMatter(), alert.getSend_date());
   }
 
   private void createLogoutDialog() {
